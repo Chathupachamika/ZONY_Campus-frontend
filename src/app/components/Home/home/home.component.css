@@ -50,7 +50,7 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns */
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 1rem;
 }
@@ -59,13 +59,13 @@
   padding: 1rem;
   border-left: 4px solid #0099ff;
   background-color: #f8f9fa;
-  transition: all 0.3s ease; /* Add smooth transition */
+  transition: all 0.3s ease; 
 }
 
 .stat-item:hover {
-  transform: scale(1.05); /* Make it 5% bigger */
-  box-shadow: 0 5px 15px rgba(0, 153, 255, 0.2); /* Add shadow for depth */
-  cursor: pointer; /* Change cursor to pointer */
+  transform: scale(1.05); 
+  box-shadow: 0 5px 15px rgba(0, 153, 255, 0.2); 
+  cursor: pointer; 
 }
 
 .number {
@@ -84,10 +84,9 @@
   line-height: 1.3;
 }
 
-/* Responsive adjustments */
 @media (max-width: 992px) {
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .faculty-grid {

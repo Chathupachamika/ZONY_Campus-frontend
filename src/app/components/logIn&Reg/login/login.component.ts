@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(event?: Event) {
-    if (event) event.preventDefault(); // Prevent form from submitting traditionally
+    if (event) event.preventDefault(); 
 
     this.profileViewService.getDetails().subscribe({
       next: (users) => {
@@ -40,13 +40,13 @@ export class LoginComponent implements OnInit {
         
         if (foundUser) {
           alert('Login successful!');
-          this.profileViewService.logUser(foundUser); // Store logged-in user details
+          this.profileViewService.logUser(foundUser); 
           if (this.rememberMe) {
             localStorage.setItem('rememberedUser', JSON.stringify(this.user));
           } else {
             localStorage.removeItem('rememberedUser');
           }
-          this.router.navigate(['/home']); // Redirect to the home component
+          this.router.navigate(['/home']); 
         } else {
           alert('Invalid email or password.');
         }
@@ -76,7 +76,6 @@ export class LoginComponent implements OnInit {
   }
 
   generateOTP(): string {
-    // Generate a 4-digit OTP
     return Math.floor(1000 + Math.random() * 9000).toString();
   }
 
@@ -84,7 +83,6 @@ export class LoginComponent implements OnInit {
     const otp = prompt("Enter the OTP:");
     if (otp === this.generatedOTP) {
       alert("OTP verification successful! You can now reset your password.");
-      // Add code to redirect to reset password page if needed
     } else {
       alert("Incorrect OTP. Please try again.");
     }

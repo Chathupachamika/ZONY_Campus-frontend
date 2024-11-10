@@ -1,4 +1,5 @@
 <app-header></app-header>
+<app-sidebar></app-sidebar>
 <!-- <div class="container mt-5">
     <div class="card program-card shadow-lg">
       <div class="card-header text-center bg-primary text-white">
@@ -42,52 +43,114 @@
     </div>
   </div>
    -->
-  
-  
 
-   <div class="faculty-carousel" style="margin-top: 100px;">
-    <div class="row" style="margin-top: 100px;">
-      <!-- Carousel Container -->
-      <div class="col-6 d-flex justify-content-center">
-        <div id="programCarousel" class="carousel slide" data-bs-ride="carousel" style="height: 450px; width: 1000px;">
-          <div class="carousel-inner" style="height: 450px; width: 1000px;">
-            <div *ngFor="let program of program; let i = index" [ngClass]="{'carousel-item': true, 'active': i === 0}">
-              <div class="card program-card" style="height: 450px; width: 1000px;">
-                <img
-                  *ngIf="program.programImageData"
-                  [src]="'data:' + program.programImageType + ';base64,' + program.programImageData"
-                  class="card-img-top program-image"
-                  alt="{{ program.programName }}"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">{{ program.programName }}</h5>
-                  <p class="card-text program-mission">{{ program.programMission }}</p>
-                  <p class="card-text program-details">{{ program.programDetails }}</p>
-                  <p class="card-text program-venue"><strong>Venue:</strong> {{ program.programVenue }}</p>
-                  <p class="card-text program-datetime"><strong>Date & Time:</strong> {{ program.programDateTime | date:'medium' }}</p>
-                  <button class="btn btn-primary">View Details</button>
-                </div>
-              </div>
+   <h1 class="h1eka">All Programmes</h1>
+   <p class="lead text-center" style="color: white">
+    Our campus offers a diverse range of programs designed to foster growth, creativity, and academic excellence. From specialized workshops to large-scale conferences, each program is crafted to enrich the learning experience and provide valuable opportunities for students and faculty to engage, collaborate, and innovate together.
+  </p>
+  
+  <div class="program" style="margin-top: 40px;">
+   <div class="filter-bar">
+    <div class="filter-container">
+        <div class="filter-item">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="bi bi-person"></i></span>
             </div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Filter by Name"
+              [(ngModel)]="filterName"
+              (input)="applyFilters()"
+            />
+          </div>
+        </div>
+      
+        <div class="filter-item">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="bi bi-building"></i></span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Filter by Faculty"
+              [(ngModel)]="filterFaculty"
+              (input)="applyFilters()"
+            />
+          </div>
+        </div>
+      
+        <div class="filter-item">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+            </div>
+            <input
+              type="month"
+              class="form-control"
+              [(ngModel)]="filterMonth"
+              (change)="applyFilters()"
+            />
+          </div>
+        </div>
+      
+        <div class="filter-item">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+            </div>
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="filterDate"
+              (change)="applyFilters()"
+            />
+          </div>
+        </div>
+      
+        <div class="filter-item">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="bi bi-clock"></i></span>
+            </div>
+            <input
+              type="time"
+              class="form-control"
+              [(ngModel)]="filterTime"
+              (change)="applyFilters()"
+            />
           </div>
         </div>
       </div>
+      
+  </div>
   
-      <!-- Carousel Controls -->
-      <div class="col-6 d-flex justify-content-between align-items-center">
-        <button class="carousel-control-prev" type="button" data-bs-target="#programCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#programCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+  <div class="program-card-container">
+    <div
+      *ngFor="let program of filteredPrograms"
+      class="card program-card"
+    >
+      <img
+        *ngIf="program.programImageData"
+        [src]="'data:' + program.programImageType + ';base64,' + program.programImageData"
+        class="card-img-top program-image"
+        alt="{{ program.programName }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ program.programName }}</h5>
+        <p class="card-text program-mission">{{ program.programMission }}</p>
+        <p class="card-text program-details">{{ program.programDetails }}</p>
+        <p class="card-text program-venue"><strong>Venue:</strong> {{ program.programVenue }}</p>
+        <p class="card-text program-datetime"><strong>Date & Time:</strong> {{ program.programDateTime | date:'medium' }}</p>
       </div>
     </div>
   </div>
-  
-  
+</div>
+<div class="calendar-section">
+    <h3>Program Schedule</h3>
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
 
-<app-sidebar></app-sidebar>  
 <app-footer></app-footer>

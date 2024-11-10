@@ -1,4 +1,4 @@
-/* Container Styling */
+
 .cont {
   margin-top: 250px;
   margin-left: 60px;
@@ -19,7 +19,6 @@
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Scrollable Track */
 .scroll {
   padding-left: 180px;
   width: 1300px;
@@ -36,17 +35,15 @@
   justify-content: center;
   height: 800px;
   align-items: center;
-  width: 100%; /* Ensure this is 100% of the container width */
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  width: 100%; 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
-/* Hide Scrollbars */
 .faculty-track::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Opera */
+  display: none; 
 }
 
-/* Navigation Buttons */
 .nav-button {
   background-color: #fff;
   border: 2px solid #ddd;
@@ -73,14 +70,13 @@
 }
 
 .prev-button {
-  left: 10px; /* Adjust positioning */
+  left: 10px;
 }
 
 .next-button {
-  right: 10px; /* Adjust positioning */
+  right: 10px;
 }
 
-/* Faculty Card Styling */
 .faculty-card {
   background-color: #fff;
   border-radius: 12px;
@@ -155,7 +151,7 @@
 .middle-card {
   width: 300px;
   opacity: 1;
-  transform: scale(1.2); /* Make middle card larger */
+  transform: scale(1.2); 
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -176,7 +172,6 @@
   transform: scale(1.05);
 }
 
-/* Media Query for Smaller Screens */
 @media (max-width: 768px) {
   .faculty-carousel {
     padding: 10px 0;
@@ -212,7 +207,6 @@
   }
 }
 
-/* Container for Faculty List */
 .details2 {
   max-width: 1400px;
   margin-left: 40px;
@@ -230,7 +224,6 @@
   width: 100%;
 }
 
-/* Faculty Card Styling (Secondary Layout) */
 .faculty-card2 {
   display: flex;
   align-items: center;
@@ -247,10 +240,9 @@
   width: 20px;
   height: 20px;
   object-fit: cover;
-  border-radius: 5px; /* Adjusted for a small rounded corner effect */
+  border-radius: 5px; 
 }
 
-/* Image Styling */
 .faculty-image2 {
   width: 50%;
   max-height: 300px;
@@ -258,7 +250,6 @@
   border-radius: 10px;
 }
 
-/* Right Content Styling */
 .mada {
   width: 1200px;
   align-items: center;
@@ -266,20 +257,36 @@
   text-align: left;
 }
 
-/* Faculty Title */
 .mada h2 {
   font-size: 2rem;
   color: #333;
   margin-bottom: 10px;
 }
+.faculties-description {
+  font-size: 1.2rem;
+  line-height: 1.6; 
+  text-align: center;
+  margin: 20px 0; 
+  padding: 15px; 
+  border: 2px solid #ddd; 
+  border-radius: 10px; 
 
-/* Faculty Icon */
+  color: #efefef; 
+}
+
+
+.h1eka{
+  margin-left: 100px;
+  font-size: 4rem;
+  color: #f1f1f1;
+  margin-top:40px;
+  margin-bottom: 20px;
+}
 .faculty-icon2 {
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
-/* Faculty Description */
 .description2 {
   font-size: 1.1rem;
   color: #666;
@@ -287,7 +294,6 @@
   line-height: 1.6;
 }
 
-/* Specializations */
 .specializations2 {
   font-size: 1rem;
   color: #555;
@@ -297,11 +303,23 @@
   color: #333;
 }
 
-/* Lecturer Details */
 .lecturer-details {
   margin-top: 20px;
   padding-top: 10px;
   border-top: 1px solid #eee;
+}
+
+.lecturer-card {
+  border: 2px solid #798e7d; 
+  padding: 20px; 
+  border-radius: 30px; 
+  background-color: #f8f9fa; 
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.lecturer-card:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .lecturer-details h3 {

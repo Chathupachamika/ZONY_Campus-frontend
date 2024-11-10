@@ -38,7 +38,6 @@
         <strong>Hi {{ userDetails.shortName }} !!!</strong>
       </a>
       <ul class="dropdown-menu">
-        <!-- Add dropdown items here, if any -->
         <li><a class="dropdown-item" href="#">Profile</a></li>
         <li><a class="dropdown-item" href="#">Settings</a></li>
         <li><a class="dropdown-item" href="#" (click)="logOut()">Logout</a></li>
@@ -52,7 +51,6 @@
         <h3 class="text-center text-primary mb-4">User Details</h3>
 
         <div *ngIf="userDetails?.imageData" class="text-center mb-3 position-relative" style="width: 200px; height: 200px;">
-          <!-- Profile Image with Camera Icon -->
           <img 
             [src]="'data:image/jpeg;base64,' + userDetails.imageData" 
             alt="User Image" 
@@ -61,13 +59,10 @@
             class="rounded-circle border border-light"
             style="object-fit: cover; width: 100%; height: 100%;">
             
-          <!-- Camera Icon Overlay -->
           <div class="camera-icon-overlay" (click)="triggerFileInput()" 
                style="position: absolute; bottom: 10px; right: 10px; cursor: pointer; background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; padding: 5px;">
             <i class="bi bi-camera text-white"></i>
           </div>
-          
-          <!-- Hidden File Input for Image Upload -->
           <input 
             type="file" 
             accept="image/*" 

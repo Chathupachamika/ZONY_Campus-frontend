@@ -40,7 +40,6 @@
             </div>
           </div>
 
-          <!-- Address and other details -->
           <div class="row mb-4">
             <div class="col-md-4">
               <label class="form-label">Date of Birth *</label>
@@ -56,7 +55,6 @@
             </div>
           </div>
 
-          <!-- Contact details -->
           <div class="row mb-4">
             <div class="col-md-6">
               <label class="form-label">Mobile Phone *</label>
@@ -68,7 +66,6 @@
             </div>
           </div>
 
-          <!-- Address -->
           <div class="mb-4">
             <label class="form-label">Home Address *</label>
             <textarea [(ngModel)]="user.address" name="address" class="form-control" rows="2" placeholder="Enter your home address" required></textarea>
@@ -82,7 +79,6 @@
           </select><br>
         </div>
 
-          <!-- Username and password -->
           <div class="row mb-4">
             <div class="col-md-6">
               <label class="form-label">User Name *</label>
@@ -93,7 +89,6 @@
               <input [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="Enter your Password" required>
             </div>
         
-          <!-- Confirm Password -->
           <div class="row mb-4">
             <div class="col-md-4 mt-3">
               <label class="form-label">Confirm Password *</label>
@@ -101,14 +96,12 @@
             </div>
           </div>
 
-          <!-- Display error messages -->
           <div *ngIf="showAlert" class="col-md-12 mt-3">
             <div *ngIf="user.password && confirmPassword && user.password !== confirmPassword" class="alert alert-danger">
               Error: Passwords do not match.
             </div>
           </div>
 
-          <!-- Profile Image -->
           <div class="mb-4 text-center">
             <label class="form-label">Profile Image *</label>
             <input type="file" style="width: 400px;" class="form-control mt-2" (change)="onFileSelected($event)" accept="image/jpeg, image/jpg">
@@ -121,7 +114,6 @@
             <small *ngIf="imageWarning" class="text-danger mt-2 d-block">{{ imageWarning }}</small>
           </div>
 
-          <!-- Submit and Back Buttons -->
           <div class="text-center">
             <button type="submit" class="submit" (click)="onSubmit()">Register Now</button>
             <button type="button" class="close" (click)="backToLogin()">Back To Log In</button>

@@ -28,7 +28,11 @@
   <button class="nav-button next-button" (click)="nextCard()">❯</button>
 </div>
 </div>
-
+<h1 class="h1eka">MORE DETAILS ABOUT FACULTIES</h1>
+<br><p class="faculties-description">
+  Our esteemed faculties are dedicated to providing high-quality education and fostering academic growth. Each faculty brings years of expertise, innovative teaching methods, and cutting-edge research to create an environment where students can excel. With diverse specializations ranging from science and technology to arts and humanities, our faculties are committed to preparing students for impactful careers in a rapidly changing world.
+</p>
+<br>
 <div class="details2">
   <div class="faculty-container2">
     <div *ngFor="let faculty of faculties" class="faculty-card2" style="margin-bottom: 20px;">
@@ -56,8 +60,8 @@
           <h1>Lecturers in Faculty</h1><br>
           <div class="row">
             <div *ngFor="let lecturer of facultyLecturers[faculty.name]" class="col-12 col-sm-6 col-md-4 mb-3">
-              <div class="mada">
-                <img class="lec-image" *ngIf="lecturer.lecturerImageData" [src]="'data:image/jpeg;base64,' + lecturer.lecturerImageData" alt="{{ lecturer.lecturerName }}"/>
+              <div class="lecturer-card">
+                <img *ngIf="lecturer.lecturerImageData" [src]="'data:image/jpeg;base64,' + lecturer.lecturerImageData" alt="{{ lecturer.lecturerName }}"/>
                 <h6>{{ lecturer.lecturerName }}</h6>
                 <p class="description2">{{ lecturer.lecturerDegrees }}</p>
                 <p>{{ lecturer.lecturerExperience }}</p>
@@ -66,6 +70,7 @@
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </div>

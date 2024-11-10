@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthService } from '../../../guardAuth/auth.service'; // Import AuthService
+import { AuthService } from '../../../guardAuth/auth.service'; 
 import { ProfileViewService } from '../../../service/profile-view.service';
 
 @Component({
@@ -27,25 +27,20 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private profileViewService: ProfileViewService,
-    private authService: AuthService, // Inject AuthService
+    private authService: AuthService, 
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    // Call to load the user details from localStorage or from AuthService
     this.loadUserDetails();
   }
 
   loadUserDetails(): void {
-    // First, try loading the user from the local storage or AuthService
     if (this.authService.isLoggedIn()) {
       this.userDetails = this.profileViewService.getUserDetails();
-
-      // If no user data in the service, fetch it from the backend
       if (!this.userDetails) {
         this.profileViewService.getDetails().subscribe(data => {
           if (data) {
-            // Save the fetched user details and log them into the service
             this.profileViewService.logUser(data);
             this.userDetails = data;
           } else {
@@ -103,8 +98,6 @@ export class SidebarComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const selectedFile = input.files[0];
-
-      // Update the profile with the new image
       this.updateAccount(selectedFile);
     }
   }

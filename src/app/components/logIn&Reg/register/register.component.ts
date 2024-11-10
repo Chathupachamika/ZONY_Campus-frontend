@@ -80,7 +80,6 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     this.showAlert = false;
 
-    // Check if password and confirm password match
     if (this.user.password !== this.confirmPassword) {
       this.showAlert = true;
       return;
@@ -95,7 +94,7 @@ export class RegisterComponent implements OnInit {
     this.profileViewService.registerUser(formData).subscribe({
       next: response => {
         console.log('Registration successful:', response.message);
-        this.router.navigate(['/login']); // Redirect to login page on success
+        this.router.navigate(['/login']); 
       },
       error: error => {
         console.error('Registration failed:', error.message);
@@ -104,6 +103,6 @@ export class RegisterComponent implements OnInit {
   }
 
   backToLogin(): void {
-    this.router.navigate(['/login']); // Navigates to the login page
+    this.router.navigate(['/login']); 
   }
 }
