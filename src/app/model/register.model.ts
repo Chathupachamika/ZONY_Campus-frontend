@@ -14,7 +14,7 @@ export class Register {
   username: string = '';
   password: string = '';
   faculty: any = {};
-  imageData?: string = '';  // Change to string for Base64 data
+  imageData?: string = '';  
   imageName?: string = '';
   imageType?: string = '';
 }
