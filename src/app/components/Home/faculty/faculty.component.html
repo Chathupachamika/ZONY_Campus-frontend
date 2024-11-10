@@ -1,0 +1,78 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="cont">
+  
+<div class="faculty-carousel">
+  <button class="nav-button prev-button" (click)="prevCard()">❮</button>
+  <div class="scroll">
+    <div #facultyTrack class="faculty-track" *ngIf="faculties.length > 0">
+      <div
+        class="faculty-card"
+        *ngFor="let faculty of faculties; let i = index"
+        [class.middle-card]="i === selectedIndex"
+        [class.left]="i < selectedIndex"
+        [class.right]="i > selectedIndex"
+        (click)="selectCard(i)"
+      >
+        <img class="image" [src]="'data:image/jpeg;base64,' + faculty.facImageData" alt="" />
+        <div class="faculty-info">
+          <div class="icon">{{ faculty.icon }}</div>
+          <h2>{{ faculty.name }}</h2>
+          <p>{{ faculty.description }}</p>
+          <p><strong>Specializations:</strong> {{ faculty.specializations }}</p>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="nav-button next-button" (click)="nextCard()">❯</button>
+</div>
+</div>
+
+<div class="details2">
+  <div class="faculty-container2">
+    <div *ngFor="let faculty of faculties" class="faculty-card2" style="margin-bottom: 20px;">
+      <div class="mada row">
+        <!-- Faculty Image on Left -->
+        <div class="col-12 col-md-8">
+          <img class="image img-fluid" [src]="'data:image/jpeg;base64,' + faculty.facImageData" alt="" />
+        </div>
+        
+        <!-- Faculty Info on Right -->
+        <div class="col-12 col-md-4" style="background-color: rgba(0, 255, 255, 0.133); border-radius: 30px;">
+          <div class="faculty-info">
+            <div class="icon">{{ faculty.icon }}</div>
+            <h2>{{ faculty.name }}</h2>
+            <p>{{ faculty.description }}</p>
+            <p><strong>Specializations:</strong> {{ faculty.specializations }}</p>
+          </div>
+          </div>
+          <div>
+          <!-- Lecturers in Faculty Section -->
+          <br>
+          <p>
+             {{ faculty.name }} is a distinguished expert in {{ faculty.specializations }}, bringing years of research and practical experience to their role. Known for their innovative contributions in {{ faculty.description }}, Dr. {{ faculty.name }} has advanced the field and inspired new approaches that address modern challenges. Their engaging and interactive teaching style transforms complex concepts into accessible knowledge, fostering a deep understanding among students. Beyond the classroom, Dr. {{ faculty.name }} mentors students in hands-on projects and research, preparing them for impactful careers. Through their dedication, Dr. {{ faculty.name }} continues to shape the future of {{ faculty.specializations }} and inspire the next generation of leaders and thinkers.
+          </p><br>
+          <h1>Lecturers in Faculty</h1><br>
+          <div class="row">
+            <div *ngFor="let lecturer of facultyLecturers[faculty.name]" class="col-12 col-sm-6 col-md-4 mb-3">
+              <div class="mada">
+                <img class="lec-image" *ngIf="lecturer.lecturerImageData" [src]="'data:image/jpeg;base64,' + lecturer.lecturerImageData" alt="{{ lecturer.lecturerName }}"/>
+                <h6>{{ lecturer.lecturerName }}</h6>
+                <p class="description2">{{ lecturer.lecturerDegrees }}</p>
+                <p>{{ lecturer.lecturerExperience }}</p>
+                <p>{{ lecturer.facultyId }}</p>
+                <p class="specializations2"><strong>Specializations:</strong> {{ lecturer.lecturer_id }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<app-footer></app-footer> 

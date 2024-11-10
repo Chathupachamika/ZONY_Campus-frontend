@@ -1,0 +1,246 @@
+.container {
+  height: 100vh; /* Full height for the container */
+  overflow-y: auto; /* Allow vertical scrolling */
+  padding-top: 50px;
+}
+
+.card {
+  background: linear-gradient(135deg, rgba(90, 89, 89, 0.505), rgba(90, 87, 87, 0.5));
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s;
+  backdrop-filter: blur(3px); 
+}
+
+
+
+.container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+
+.card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.form-control{
+ background-color: rgba(194, 216, 240, 0.39);
+}
+.form-select{
+  background-color: rgba(185, 180, 167, 0.39);
+}
+.h1eka {
+  font-size: 3.9em;
+  font-weight: bold;
+  color: #184b16; /* Make the header color more vibrant */
+  text-align: center; /* Center the heading */
+  margin-top: -50px;
+  padding-bottom: 40px; /* Space below the header */
+}
+
+.form-control, .form-select {
+  border-width: 2px;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Add shadow transition */
+}
+
+.form-control:focus, .form-select:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue glow on focus */
+}
+
+input.ng-valid, select.ng-valid, textarea.ng-valid {
+  border-color: #28a745; 
+}
+
+input.ng-invalid.ng-touched, select.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border-color: #dc3545; }
+
+.profile-image-container {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border: 2px dashed #007bff; 
+  position: relative;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin: 20px auto; 
+  transition: border-color 0.3s;
+}
+
+.profile-image-container:hover {
+  border-color: #0056b3; /* Darker blue on hover */
+}
+
+.profile-image-placeholder, .profile-image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+.background {
+  background-image: url('../../../../assets/img/bg.jpg'); /* Replace with your background URL */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+
+body {
+  background-image: url('../../../../assets/img/bg.jpg'); /* Replace with your image path */
+  background-size: cover; /* Cover the entire viewport */
+  background-position: center; /* Center the image */
+  background-attachment: fixed; /* Keep the background fixed */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  height: 100vh; /* Ensure the body takes full height */
+  overflow: hidden; /* Prevent body scroll */
+}
+
+.close {
+  width: 250px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  font-size: 1.1em;
+  border: 2px solid #230980;
+  background: linear-gradient(45deg, #230980, #3e16a6);
+  color: #fff;
+  transition: background 0.3s ease, transform 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 20px; /* Added padding for better appearance */
+  margin-right: 900px; /* Align to the left */
+}
+
+.close:hover {
+  background: linear-gradient(45deg, #3e16a6, #230980);
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.submit {
+  width: 150px;
+  border-radius: 25px;
+  font-size: 1.1em;
+  border: 2px solid #28a745; /* Green border */
+  background: linear-gradient(45deg, #28a745, #5cb85c);
+  color: #fff;
+  transition: background 0.3s ease, transform 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 20px; /* Added padding for better appearance */
+  margin-left: 900px; /* Align to the right */
+}
+
+.submit:hover {
+  background: linear-gradient(45deg, #5cb85c, #28a745);
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* General form styling */
+.form-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Input fields */
+.form-container input,
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+  border-color: #00796b;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Button styling */
+.form-container button.submit {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1em;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #26a69a, #00796b); /* Gradient background */
+  color: #ffffff; /* White text color */
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-container button.submit:hover {
+  background: linear-gradient(45deg, #00796b, #26a69a); /* Reversed gradient on hover */
+  transform: translateY(-2px) scale(1.05); /* Lift and slightly enlarge */
+}
+
+/* Alert message styling */
+.alert-message {
+  color: #dc3545; /* Red color for alert */
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #dc3545;
+  border-radius: 5px;
+  background: rgba(255, 0, 0, 0.1); /* Light red background */
+  margin-bottom: 15px;
+}
+
+/* Success message styling */
+.success-message {
+  color: #28a745; /* Green color for success */
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #28a745;
+  border-radius: 5px;
+  background: rgba(40, 167, 69, 0.1); /* Light green background */
+  margin-bottom: 15px;
+}
+
+/* Image upload preview */
+.image-preview-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.image-preview-container img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px dashed #007bff;
+}
+
+/* Loader styling (optional) */
+.loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #00796b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,183 @@
+<div class="sidebar" style="padding-top: 10px;" [class.sidebar-expanded]="isExpanded">
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi pe-none me-2" width="40" height="32">
+        <use xlink:href="#bootstrap"/>
+      </svg>
+      <span class="fs-4" style="font-weight: bold;">ZONY CAMPUS
+        <h6>--- Bring Dreams To Life ---</h6>
+      </span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto" style="height: 560px;">
+      <li class="nav-item"><a href="/home" class="nav-link text-white"><i class="bi bi-house-door me-4"></i>Home</a></li>
+      <li><a href="/about" class="nav-link text-white"><i class="bi bi-app-indicator me-4"></i>About</a></li>
+      <li><a href="#" class="nav-link text-white"><i class="bi bi-clipboard2-data me-4"></i>Faculties</a></li>
+      <li><a href="#" class="nav-link text-white"><i class="bi bi-calendar2-event me-4"></i>Programmes</a></li>
+      <li><a href="#" class="nav-link text-white"><i class="bi bi-cup-hot me-4"></i>Zonar</a></li>
+      <li><a href="#" class="nav-link text-white"><i class="bi bi-hourglass-split me-4"></i>Life At ZONY</a></li>
+      <li><a href="#" class="nav-link text-white"><i class="bi bi-telephone me-4"></i>Contact Us</a></li>
+      <li><a href="#" class="nav-link text-white"><i class="bi bi-door-open me-4"></i>Apply Now</a></li>
+      <li><a href="#" class="nav-link text-white" (click)="logOut()"><i class="bi bi-door-open me-4"></i>Log Out</a></li>
+    </ul>
+    <hr>
+
+    <div class="dropdown" *ngIf="userDetails">
+      <a 
+        href="javascript:void(0)" 
+        class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" 
+        data-bs-toggle="dropdown" 
+        aria-expanded="false" 
+        (click)="showUserDetails(); $event.preventDefault()">
+        <img 
+          [src]="'data:image/jpeg;base64,' + userDetails.imageData" 
+          alt="User Image" 
+          width="40" 
+          height="40" 
+          class="rounded-circle me-2">
+        <strong>Hi {{ userDetails.shortName }} !!!</strong>
+      </a>
+      <ul class="dropdown-menu">
+        <!-- Add dropdown items here, if any -->
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#" (click)="logOut()">Logout</a></li>
+      </ul>
+    </div>
+    
+
+    <div *ngIf="isMiniWindowVisible" class="mini-window">
+      <div class="mini-window-content card shadow-lg p-4">
+        <button class="close-btn btn btn-danger" (click)="closeMiniWindow()">&times;</button>
+        <h3 class="text-center text-primary mb-4">User Details</h3>
+
+        <div *ngIf="userDetails?.imageData" class="text-center mb-3 position-relative" style="width: 200px; height: 200px;">
+          <!-- Profile Image with Camera Icon -->
+          <img 
+            [src]="'data:image/jpeg;base64,' + userDetails.imageData" 
+            alt="User Image" 
+            width="200" 
+            height="200" 
+            class="rounded-circle border border-light"
+            style="object-fit: cover; width: 100%; height: 100%;">
+            
+          <!-- Camera Icon Overlay -->
+          <div class="camera-icon-overlay" (click)="triggerFileInput()" 
+               style="position: absolute; bottom: 10px; right: 10px; cursor: pointer; background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; padding: 5px;">
+            <i class="bi bi-camera text-white"></i>
+          </div>
+          
+          <!-- Hidden File Input for Image Upload -->
+          <input 
+            type="file" 
+            accept="image/*" 
+            (change)="onImageSelected($event)" 
+            #fileInput 
+            style="display: none;">
+        </div>
+        
+
+        <div *ngIf="isEditMode else viewMode">
+          <div class="form-group">
+            <label for="reg_id">Registered Id : </label>
+            <input id="reg_id" [(ngModel)]="userDetails.reg_id" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="fullName">Full Name : </label>
+            <input id="fullName" [(ngModel)]="userDetails.fullName" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email : </label>
+            <input id="email" [(ngModel)]="userDetails.email" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="mobilePhone">Mobile Phone : </label>
+            <input id="mobilePhone" [(ngModel)]="userDetails.mobile" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="program">Programmes : </label>
+            <input id="program" [(ngModel)]="userDetails.program" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="title">Title : </label>
+            <input id="title" [(ngModel)]="userDetails.title" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="referral">Refferral : </label>
+            <input id="referral" [(ngModel)]="userDetails.referral" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="shortName">Short Name : </label>
+            <input id="shortName" [(ngModel)]="userDetails.shortName" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="dob">Date Of Birth : </label>
+            <input id="dob" [(ngModel)]="userDetails.dob" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="country">Country : </label>
+            <input id="country" [(ngModel)]="userDetails.country" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="passport">Passport : </label>
+            <input id="passport" [(ngModel)]="userDetails.passport" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="address">Address : </label>
+            <input id="address" [(ngModel)]="userDetails.address" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="username">UserName : </label>
+            <input id="username" [(ngModel)]="userDetails.username" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password : </label>
+            <input id="password" [(ngModel)]="userDetails.password" class="form-control" />
+          </div>
+          
+          <div class="action-buttons text-center mt-4">
+            <button class="btn btn-success mb-2" (click)="updateAccount(userDetails)">Update Account</button>
+            <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+          </div>
+        </div>
+
+        <ng-template #viewMode>
+          <p><strong>Registered Id :</strong>{{userDetails.reg_id}}</p>
+          <p><strong>Full Name :</strong> {{userDetails?.fullName}}</p>
+          <p><strong>Email :</strong> {{userDetails?.email}}</p>
+          <p><strong>Mobile Phone :</strong> {{userDetails?.mobile}}</p>
+          <p><Strong>Programme :</Strong>{{userDetails.program}}</p>
+          <p><strong>Title :</strong> {{userDetails.title}}</p>
+          <p><strong>Referral :</strong> {{userDetails.refferral}}</p>
+          <p><strong>Short Name :</strong> {{userDetails?.shortName}}</p>
+          <p><Strong>Date Of Birth :</Strong>{{userDetails.dob}}</p>
+          <p><Strong>Country :</Strong>{{userDetails.country}}</p>
+          <p><strong>Passport :</strong> {{userDetails.passport}}</p>
+          <p><strong>Address :</strong> {{userDetails.address}}</p>
+          <p><strong>UserName :</strong> {{userDetails.username}}</p>
+          <p><strong>Password :</strong>{{userDetails.password}}</p>
+          
+          <div class="action-buttons text-center mt-4">
+            <button class="btn btn-warning mb-2" (click)="openEditForm()">Edit Account</button>
+            <button class="btn btn-danger mb-2" (click)="deleteAccount()">Delete Account</button>
+            <button class="btn btn-secondary" (click)="logOut()">Log Out</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div *ngIf="isPasswordPromptVisible" class="password-prompt">
+      <div class="card shadow-lg p-4">
+        <h3 class="text-center text-danger mb-4">Password Verification</h3>
+        <div class="form-group">
+          <input type="password" [(ngModel)]="password" class="form-control" placeholder="Enter password to proceed" required>
+        </div>
+        <div *ngIf="passwordError" class="alert alert-danger mt-3">Incorrect password. Please try again.</div>
+        <div class="form-group text-center mt-4">
+          <button class="btn btn-primary" (click)="verifyPassword()">Verify</button>
+          <button class="btn btn-secondary" (click)="closePasswordPrompt()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
