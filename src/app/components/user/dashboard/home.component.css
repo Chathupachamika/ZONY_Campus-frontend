@@ -12,17 +12,7 @@
   background-size: contain; 
   background-repeat: no-repeat;  
 }
-.campus-image {
-  background-image: url('../../../../assets/img/jaya.png');
-  position: absolute;
-  width: 560px;
-  margin-top: -250px;
-  height: 800px;   
-  margin-left: 939px;
-  background-repeat: no-repeat; 
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+
 .why-nibm {
   border-radius:30px;
   padding: 1rem;

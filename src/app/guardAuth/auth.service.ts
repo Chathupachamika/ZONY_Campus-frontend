@@ -36,6 +36,15 @@ export class AuthService {
           this.profileViewService.logUser(foundUser);
           localStorage.setItem('currentUser', JSON.stringify(foundUser));
           this.currentUserSubject.next(foundUser);
+
+          // Redirect based on user role
+          if (foundUser.title === 'Admin') {
+            this.router.navigate(['/admin/dashboard']);
+            this.router.navigate(['admin/program_main']);
+          } else {
+            this.router.navigate(['/home']);
+          }
+
           return foundUser;
         } else {
           throw new Error('Invalid username or password');

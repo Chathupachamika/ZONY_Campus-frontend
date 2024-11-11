@@ -30,6 +30,7 @@
     "@syncfusion/ej2-angular-gantt": "^27.1.58",
     "@syncfusion/ej2-angular-layouts": "^27.1.56",
     "@syncfusion/ej2-angular-schedule": "^27.1.58",
+    "@types/node": "^22.9.0",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
@@ -37,6 +38,7 @@
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.2",
+    "nodemailer": "^6.9.16",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

@@ -259,3 +259,17 @@ header {
 .nav-link:hover::after {
   width: 100%;
 }
+.success-snackbar {
+  background-color: #4caf50;
+  color: white;
+}
+
+.admin-welcome-snackbar {
+  background-color: #2196f3;
+  color: white;
+}
+
+.error-snackbar {
+  background-color: #f44336;
+  color: white;
+}

@@ -11,7 +11,6 @@
   nav {
     box-shadow: 10px 10px 1kl0px rgba(63, 220, 24, 0.2);
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
     padding: 17px;
     font-size: 1.35rem;
     border-radius: 15px;
@@ -65,7 +64,7 @@
     display: block;
   }
   nav a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 10px 15px;
     margin: 0 13px;

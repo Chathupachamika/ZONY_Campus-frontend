@@ -10,7 +10,7 @@ const updatedAppConfig = {
   ...appConfig,
   providers: [
     ...(appConfig.providers || []),
-    importProvidersFrom(HttpClientModule,CommonModule), provideAnimationsAsync()
+    importProvidersFrom(HttpClientModule,CommonModule), provideAnimationsAsync(), provideAnimationsAsync()
   ]
 };
 

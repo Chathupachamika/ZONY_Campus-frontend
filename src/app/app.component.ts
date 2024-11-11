@@ -4,7 +4,7 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ScheduleModule],
+  imports: [RouterOutlet, ScheduleModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

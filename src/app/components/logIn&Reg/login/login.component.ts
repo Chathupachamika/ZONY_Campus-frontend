@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../guardAuth/auth.service';
 import { ProfileViewService } from '../../../service/profile-view.service';
@@ -21,7 +22,12 @@ export class LoginComponent implements OnInit {
   enteredOTP: string = '';
   generatedOTP: string = '';
 
-  constructor(private profileViewService: ProfileViewService, private router: Router,private authService: AuthService) {}
+  constructor(
+    private profileViewService: ProfileViewService,
+    private router: Router,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     const rememberedUser = localStorage.getItem('rememberedUser');
@@ -39,21 +45,49 @@ export class LoginComponent implements OnInit {
         const foundUser = users.find(u => u.email === this.user.email && u.password === this.user.password);
         
         if (foundUser) {
-          alert('Login successful!');
           this.profileViewService.logUser(foundUser); 
           if (this.rememberMe) {
             localStorage.setItem('rememberedUser', JSON.stringify(this.user));
           } else {
             localStorage.removeItem('rememberedUser');
           }
-          this.router.navigate(['/home']); 
+          
+          if (foundUser.title === 'Admin') {
+            this.router.navigate(['/admin/dashboard']).then(() => {
+              this.snackBar.open('Welcome to the Admin Dashboard!', '', {
+                duration: 3000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+                panelClass: ['admin-welcome-snackbar']
+              });
+            });
+          } else {
+            this.router.navigate(['/home']).then(() => {
+              this.snackBar.open('Login successful!', '', {
+                duration: 2000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+                panelClass: ['success-snackbar']
+              });
+            });
+          }
         } else {
-          alert('Invalid email or password.');
+          this.snackBar.open('Invalid email or password.', '', {
+            duration: 2000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center',
+            panelClass: ['error-snackbar']
+          });
         }
       },
       error: (error) => {
         console.error('Error fetching users:', error);
-        alert('Login failed. Please try again.');
+        this.snackBar.open('Login failed. Please try again.', '', {
+          duration: 2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+          panelClass: ['error-snackbar']
+        });
       }
     });
   }
