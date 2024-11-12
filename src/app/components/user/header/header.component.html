@@ -16,28 +16,23 @@
             </div>
           </div>
           <div class="nav-item">
-          <a href="/faculties">Faculties</a>
-          <div class="dropdown-content">
-            <a href="/computing">Computing</a>
-            <a href="/engineering">Engineering</a>
-            <a href="/bussiness">Business</a>
-            <a href="/humanities">Humanties and Sciences</a>
-            <a href="/law">School Of Law</a>
-            <a href="/architecture">School Of Architecture</a>
+            <a href="/faculties">Faculties</a>
+            <div class="dropdown-content">
+              <a *ngFor="let faculty of faculties" href="/faculties">
+                {{ faculty.name }}
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="nav-item">
-          <a href="/program">Programmes</a>
-          <div class="dropdown-content">
-            <a href="/masters">Masters Programmes</a>
-            <a href="/diplomas">Diploma Programmes</a>
-            <a href="/degrees">Degree Programmes</a>
-            <a href="/foreign-languages">Foreign Languages</a>
-            <a href="/pre-university">Pre-University Programmes</a>
-            <a href="/workshops">Work Shops</a>
-            <a href="/professional-certifications">Professional Certifications</a>
+          
+          <div class="nav-item">
+            <a href="/program">Programmes</a>
+            <div class="dropdown-content">
+              <a *ngFor="let program of program" href="/program">
+                {{ program.programName }}
+              </a>
+            </div>
           </div>
-        </div>
+          
           <a href="/zonar">Zonar</a>
           <a href="/life-at-zony">Life At ZONY</a>
           <a href="/contact">Contact Us</a>

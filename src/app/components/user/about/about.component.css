@@ -3,12 +3,12 @@
   }
   
   .logo {
-    background-image: url('../../../../assets/img/logo.jpg');  
+    background-image: url('../../../../assets/img/logo.png');  
     position: absolute;
     top: 20px;
     left: 20px;
     width: 250px;
-    height: 213px;  
+    height: 253px;  
     background-size: contain; 
     background-repeat: no-repeat;  
   }

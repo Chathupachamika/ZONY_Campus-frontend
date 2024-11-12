@@ -37,7 +37,6 @@ export class AuthService {
           localStorage.setItem('currentUser', JSON.stringify(foundUser));
           this.currentUserSubject.next(foundUser);
 
-          // Redirect based on user role
           if (foundUser.title === 'Admin') {
             this.router.navigate(['/admin/dashboard']);
             this.router.navigate(['admin/program_main']);

@@ -19,15 +19,15 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   styleUrls: ['./faculty.component.css']
 })
 export class FacultyComponent implements OnInit {
-  faculties: Faculty[] = []; // Store all faculties
-  filteredFaculties: Faculty[] = []; // Store filtered faculties
-  facultyLecturers: { [key: string]: Lecturer[] } = {}; // Store lecturers by faculty name
+  faculties: Faculty[] = []; 
+  filteredFaculties: Faculty[] = []; 
+  facultyLecturers: { [key: string]: Lecturer[] } = {}; 
   userDetails: any;
   selectedIndex = 0;
   facultiesCount = 0;
-  filterName: string = ''; // Filter by faculty name
-  filterFaculty: string = ''; // Filter by specialization or faculty
-  filterDate: string = ''; // Filter by date (if applicable)
+  filterName: string = ''; 
+  filterFaculty: string = ''; 
+  filterDate: string = ''; 
   @ViewChild('facultyTrack') facultyTrack!: ElementRef;
 
   constructor(
@@ -38,30 +38,27 @@ export class FacultyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Check if the user is logged in
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/login']);
       return;
     }
 
-    // Fetch faculties
     this.facultyService.getFaculties().subscribe((data) => {
-      this.faculties = data; // Store the faculties
-      this.filteredFaculties = [...this.faculties]; // Initially, all faculties are displayed
+      this.faculties = data; 
+      this.filteredFaculties = [...this.faculties];
       this.facultiesCount = this.faculties.length;
-      this.selectedIndex = Math.floor(this.facultiesCount / 2); // Set the initial selected index to the middle
+      this.selectedIndex = Math.floor(this.facultiesCount / 2); 
       this.scrollToMiddleCard();
 
-      // Fetch lecturers for each faculty and store them in the facultyLecturers object
+      
       this.faculties.forEach((faculty) => {
         this.facultyService.searchLecturersByFaculty(faculty.name).subscribe((lecturers) => {
-          this.facultyLecturers[faculty.name] = lecturers; // Store lecturers by faculty name
+          this.facultyLecturers[faculty.name] = lecturers; 
           console.log('Lecturers for faculty:', faculty.name, this.facultyLecturers);
         });
       });
     });
 
-    // Get user details if logged in
     this.userDetails = this.profileViewService.getUserDetails();
     if (!this.userDetails) {
       this.profileViewService.getDetails().subscribe(data => {
@@ -77,25 +74,20 @@ export class FacultyComponent implements OnInit {
     }, 0);
   }
 
-  // Select a faculty card by index
   selectCard(index: number): void {
     this.selectedIndex = index;
     this.scrollToMiddleCard();
   }
 
-  // Move to the next faculty card
   nextCard(): void {
     this.selectedIndex = (this.selectedIndex + 1) % this.facultiesCount;
     this.scrollToMiddleCard();
   }
 
-  // Move to the previous faculty card
   prevCard(): void {
     this.selectedIndex = (this.selectedIndex - 1 + this.facultiesCount) % this.facultiesCount;
     this.scrollToMiddleCard();
   }
-
-  // Scroll to the middle faculty card
   scrollToMiddleCard(): void {
     if (!this.facultyTrack?.nativeElement) return;
 
