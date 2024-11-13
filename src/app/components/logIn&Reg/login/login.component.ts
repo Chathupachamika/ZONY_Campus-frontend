@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../../guardAuth/auth.service';
 import { ProfileViewService } from '../../../service/profile-view.service';
+import { RegisterService } from '../../../service/register.service';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +18,11 @@ export class LoginComponent implements OnInit {
     password: ''
   };
   rememberMe: boolean = false;
-  phoneNumber: string = '';
-  enteredOTP: string = '';
-  generatedOTP: string = '';
 
   constructor(
     private profileViewService: ProfileViewService,
     private router: Router,
-    private authService: AuthService,
+    private registerService: RegisterService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -52,25 +49,15 @@ export class LoginComponent implements OnInit {
             localStorage.removeItem('rememberedUser');
           }
           
-          if (foundUser.title === 'Admin') {
-            this.router.navigate(['/admin/dashboard']).then(() => {
-              this.snackBar.open('Welcome to the Admin Dashboard!', '', {
-                duration: 3000,
-                verticalPosition: 'top',
-                horizontalPosition: 'center',
-                panelClass: ['admin-welcome-snackbar']
-              });
+          const redirectPath = foundUser.title === 'Admin' ? '/admin/dashboard' : '/home';
+          this.router.navigate([redirectPath]).then(() => {
+            this.snackBar.open(`Welcome${foundUser.title === 'Admin' ? ' to the Admin Dashboard!' : '!'}`, '', {
+              duration: 3000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+              panelClass: [foundUser.title === 'Admin' ? 'admin-welcome-snackbar' : 'success-snackbar']
             });
-          } else {
-            this.router.navigate(['/home']).then(() => {
-              this.snackBar.open('Login successful!', '', {
-                duration: 2000,
-                verticalPosition: 'top',
-                horizontalPosition: 'center',
-                panelClass: ['success-snackbar']
-              });
-            });
-          }
+          });
         } else {
           this.snackBar.open('Invalid email or password.', '', {
             duration: 2000,
@@ -93,32 +80,38 @@ export class LoginComponent implements OnInit {
   }
 
   openForgotPassword() {
-    const phone = prompt("Please enter your phone number:");
-    if (phone) {
-      if (this.isPhoneNumberValid(phone)) {
-        this.generatedOTP = this.generateOTP();
-        alert(`OTP sent to your phone number: ${phone}`);
-        this.verifyOTP();
-      } else {
-        alert("Invalid phone number. Please try again.");
-      }
+    if (!this.isEmailValid(this.user.email)) {
+        this.snackBar.open('Please enter a valid email address.', '', {
+            duration: 2000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center',
+            panelClass: ['error-snackbar']
+        });
+        return;
     }
-  }
 
-  isPhoneNumberValid(phone: string): boolean {
-    return /^\d{10}$/.test(phone);
-  }
-
-  generateOTP(): string {
-    return Math.floor(1000 + Math.random() * 9000).toString();
-  }
-
-  verifyOTP() {
-    const otp = prompt("Enter the OTP:");
-    if (otp === this.generatedOTP) {
-      alert("OTP verification successful! You can now reset your password.");
-    } else {
-      alert("Incorrect OTP. Please try again.");
-    }
+    this.registerService.sendPasswordResetEmail(this.user.email).subscribe({
+        next: (response) => {
+            this.snackBar.open('Password reset email sent!', '', {
+                duration: 2000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+                panelClass: ['success-snackbar']
+            });
+        },
+        error: (error) => {
+            console.error('Error sending password reset email:', error);
+            alert('Open Email and get password...');
+            this.snackBar.open('Password sent to Email...', '', {
+                duration: 2000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+                panelClass: ['error-snackbar']
+            });
+        }
+    });
+}
+  isEmailValid(email: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 }

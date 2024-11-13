@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { FullCalendarModule } from '@fullcalendar/angular'; 
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -32,7 +32,8 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit {
+  @ViewChildren('number') numbers!: QueryList<ElementRef>;
   program: Program[] = [];
   filteredPrograms: Program[] = [];
   filterName: string = '';
@@ -65,7 +66,9 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {}
-
+  ngAfterViewInit(): void {
+    this.animateNumbers();
+  }
   ngOnInit(): void {
     this.authService.loadUserDetails();
 
@@ -120,6 +123,25 @@ export class HomeComponent implements OnInit {
     this.populateCalendarEvents();
   }
 
+  animateNumbers() {
+    this.numbers.forEach((numberElement) => {
+      const targetText = numberElement.nativeElement.innerText;
+      const targetNumber = parseInt(targetText.replace(/\D/g, ''), 10); 
+      const duration = 3200;
+
+      let current = 0;
+      const increment = targetNumber / (duration / 30); // Calculate increment based on frames
+
+      const interval = setInterval(() => {
+        current += increment;
+        if (current >= targetNumber) {
+          current = targetNumber;
+          clearInterval(interval);
+        }
+        numberElement.nativeElement.innerText = `${Math.floor(current)}` + targetText.replace(/\d+/g, ''); // Append non-numeric text
+      }, 30); // Update every 30ms for smooth animation
+    });
+  }
   populateCalendarEvents(): void {
     const events = this.filteredPrograms.map(program => {
       const date = new Date(program.programDateTime);
