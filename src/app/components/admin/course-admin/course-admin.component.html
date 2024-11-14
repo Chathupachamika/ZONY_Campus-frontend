@@ -1,0 +1,80 @@
+<app-header-admin></app-header-admin>
+<div id="courseCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let course of courses; let i = index" [ngClass]="{'active': i === 0}">
+        <img 
+          *ngIf="course.courseImageData" 
+          [src]="'data:image/jpeg;base64,' + course.courseImageData" 
+          class="d-block w-75 mx-auto" 
+          [alt]="course.courseName"
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ course.courseName }}</h5>
+          <p>{{ course.description }}</p>
+        </div>
+      </div>
+    </div>
+    <button 
+      class="carousel-control-prev" 
+      type="button" 
+      data-bs-target="#courseCarousel" 
+      data-bs-slide="prev"
+      style="margin-top:180px;"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button 
+      class="carousel-control-next" 
+      type="button" 
+      data-bs-target="#courseCarousel" 
+      data-bs-slide="next"
+      style="margin-top:180px;"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+  
+    <!-- Show All Button -->
+    <div class="show-all-container">
+      <button class="btn btn-primary show-all-button" (click)="showAllCourses()">Show All</button>
+    </div>
+  
+    <!-- Mini Window with Filter Options -->
+    <div *ngIf="showMiniWindow" class="mini-window">
+        <div class="mini-window-header">
+          <h5>All Courses</h5>
+          <button class="btn-close" (click)="showMiniWindow = false"></button>
+        </div>
+      
+        <div class="filter-options">
+          <input type="text" [(ngModel)]="filterName" placeholder="Filter by name" />
+          <input type="text" [(ngModel)]="filterSubject" placeholder="Filter by subject" />
+          <input type="number" [(ngModel)]="filterFee" placeholder="Filter by fee" />
+          <button class="btn btn-primary" (click)="applyFilters()">Apply Filters</button>
+        </div>
+      
+        <div class="mini-window-content d-flex flex-wrap gap-3">
+          <div *ngFor="let course of filteredCourses" class="card course-card">
+            <img
+              *ngIf="course.courseImageData"
+              [src]="'data:image/jpeg;base64,' + course.courseImageData"
+              class="card-img-top img-fluid"
+              style="max-height: 150px; object-fit: cover; border-radius: 8px;"
+              [alt]="course.courseName"
+            />
+            <div class="card-body">
+              <h6 class="card-title">{{ course.courseName }}</h6>
+              <p>subject - {{ course.subjects }}</p>
+              <p class="card-text">{{ course.description }}</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+<app-sidebar-admin></app-sidebar-admin>
+<app-footer></app-footer>
