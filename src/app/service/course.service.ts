@@ -7,7 +7,8 @@ import { Course } from '../model/course.model';
   providedIn: 'root'
 })
 export class CourseService {
-  private apiEndpoint = 'http://localhost:8080/course';
+  private apiEndpoint = 'http://localhost:9090/course';
+  private baseUrl = 'http://localhost:9090/payment'; 
 
   constructor(private http: HttpClient) {}
 
@@ -49,4 +50,7 @@ export class CourseService {
     });
   }
 
+  createPayment(paymentDetails: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/pay`, paymentDetails);
+  }
 }

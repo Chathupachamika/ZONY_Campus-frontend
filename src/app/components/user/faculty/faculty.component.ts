@@ -25,6 +25,7 @@ export class FacultyComponent implements OnInit {
   userDetails: any;
   selectedIndex = 0;
   facultiesCount = 0;
+  
   filterName: string = ''; 
   filterFaculty: string = ''; 
   filterDate: string = ''; 

@@ -9,9 +9,9 @@ import { Program } from '../model/program.model';
 export class ProgramService {
   private userResponse: { message: string, program: any } = { message: '', program: {} };
   private program: Program | null = null;
-  private apiUrl = 'http://localhost:8080/program/get-allPrograms';
-  private updateApiUrl = 'http://localhost:8080/program/update-Program'; 
-  private deleteApiUrl = 'http://localhost:8080/program/deleteProgram-by-id'; 
+  private apiUrl = 'http://localhost:9090/program/get-allPrograms';
+  private updateApiUrl = 'http://localhost:9090/program/update-Program'; 
+  private deleteApiUrl = 'http://localhost:9090/program/deleteProgram-by-id'; 
 
   constructor(private http: HttpClient) {}
 
@@ -23,7 +23,7 @@ export class ProgramService {
 
  
   addProgram(formData: FormData): Observable<{ message: string, program: Program }> {
-    return this.http.post<{ message: string, program: Program }>('http://localhost:8080/program/add-Program', formData)
+    return this.http.post<{ message: string, program: Program }>('http://localhost:9090/program/add-Program', formData)
       .pipe(
         tap(response => {
           console.log('Response:', this.userResponse);

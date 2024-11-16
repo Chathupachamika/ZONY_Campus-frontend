@@ -8,8 +8,8 @@ import { Register } from '../model/register.model';
 })
 export class RegisterService {
 
-  private apiUrl = 'http://localhost:8080/register'; 
-  private baseUrl = 'http://localhost:8080';
+  private apiUrl = 'http://localhost:9090/register'; 
+  private baseUrl = 'http://localhost:9090';
 
   constructor(private http: HttpClient) { }
 

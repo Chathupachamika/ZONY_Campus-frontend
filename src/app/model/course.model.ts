@@ -7,4 +7,5 @@ export interface Course {
     courseImageName: string;
     courseImageType: string;
     courseImageData: Blob | null;
+    isEditing?: boolean;
   }

@@ -27,10 +27,10 @@ export class ProfileViewService {
   private userResponse: { message: string, userDetails: any } = { message: '', userDetails: {} };
   private userDetails: UserDetails | null = null;
   private userDetailsByReg: UserDetails | null = null;
-  private verifyPasswordUrl = `http://localhost:8080/register/verifyPasswordUrl`;
-  private apiUrl = 'http://localhost:8080/register/get-all';
-  private updateApiUrl = 'http://localhost:8080/register/update-user'; 
-  private deleteApiUrl = 'http://localhost:8080/register/delete-by-id'; 
+  private verifyPasswordUrl = `http://localhost:9090/register/verifyPasswordUrl`;
+  private apiUrl = 'http://localhost:9090/register/get-all';
+  private updateApiUrl = 'http://localhost:9090/register/update-user'; 
+  private deleteApiUrl = 'http://localhost:9090/register/delete-by-id'; 
 
   constructor(private http: HttpClient) {}
 
@@ -52,7 +52,7 @@ export class ProfileViewService {
   }
 
   registerUser(formData: FormData): Observable<{ message: string, userDetails: any }> {
-    return this.http.post<{ message: string, userDetails: any }>('http://localhost:8080/register/add-user', formData)
+    return this.http.post<{ message: string, userDetails: any }>('http://localhost:9090/register/add-user', formData)
       .pipe(tap(response => {
         console.log('Response:', this.userResponse);  
         console.log('User was added:', this.userResponse.message);

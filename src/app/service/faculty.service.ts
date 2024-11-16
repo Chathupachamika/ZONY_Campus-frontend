@@ -17,9 +17,9 @@ interface Faculty {
   providedIn: 'root'
 })
 export class FacultyService {
-  private baseUrl = 'http://localhost:8080/faculty/get-allFaculty'; 
-  private lecturesUrl = 'http://localhost:8080/lecturer/get-allLecturer';
-  private searchByFaculty = 'http://localhost:8080/lecturer/searchLecturer-by-faculty';
+  private baseUrl = 'http://localhost:9090/faculty/get-allFaculty'; 
+  private lecturesUrl = 'http://localhost:9090/lecturer/get-allLecturer';
+  private searchByFaculty = 'http://localhost:9090/lecturer/searchLecturer-by-faculty';
 
   constructor(private http: HttpClient) { }
 
