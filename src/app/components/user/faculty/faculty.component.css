@@ -290,6 +290,20 @@
   font-size: 2rem;
   margin-bottom: 10px;
 }
+.circle-img-container {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  margin: 0 auto; /* Center the container */
+}
+
+.circle-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%; /* Makes the image a circle */
+  border: 2px solid #f8f9fa; /* Light border */
+}
 
 .description2 {
   font-size: 1.1rem;

@@ -9,6 +9,7 @@ import { SidebarAdminComponent } from './components/admin/sidebar-admin/sidebar-
 import { LoginComponent } from './components/logIn&Reg/login/login.component';
 import { RegisterComponent } from './components/logIn&Reg/register/register.component';
 import { AboutComponent } from './components/user/about/about.component';
+import { BotComponent } from './components/user/bot/bot.component';
 import { FacultyComponent } from './components/user/faculty/faculty.component';
 import { HomeComponent } from './components/user/home/home.component';
 import { ProgramComponent } from './components/user/program/program.component';
@@ -18,7 +19,7 @@ export const routes: Routes = [
   { path: 'admin/dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: { isAdminRoute: true } },
   {path:'admin/program-admin', component: ProgramAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true}},
   {path:'admin/faculty-admin', component: FacultyAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true}},
-  { path: 'admin/sidebar-admin', component: SidebarAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true } },
+  {path: 'admin/sidebar-admin', component: SidebarAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true } },
   {path:'admin/header-admin', component: HeaderAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true}},
   {path:'admin/course-admin', component: CourseAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true}},
   {path:'admin/about-admin', component: AboutAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true}},
@@ -29,7 +30,9 @@ export const routes: Routes = [
   {path: 'program', component: ProgramComponent, canActivate:[AuthGuard]},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+  { path: 'zonar', component: BotComponent, canActivate: [AuthGuard] },
   { path: 'faculties', component: FacultyComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' } 
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
+
 
 ];

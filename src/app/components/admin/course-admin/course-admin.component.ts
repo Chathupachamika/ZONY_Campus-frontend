@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Course } from '../../../model/course.model';
 import { CourseService } from '../../../service/course.service';
@@ -15,20 +15,12 @@ import { SidebarAdminComponent } from "../sidebar-admin/sidebar-admin.component"
   styleUrls: ['./course-admin.component.css']
 })
 export class CourseAdminComponent implements OnInit {
+  @ViewChild('fileInput') fileInput!: ElementRef;
   courses: Course[] = [];
   filteredCourses: Course[] = [];
   showMiniWindow: boolean = false;
   filterName: string = '';
-  selectedCourse: Course = {
-    courseId: 0,
-    courseName: '',
-    description: '',
-    subjects: '',
-    courseFee: 0,
-    courseImageName: '',
-    courseImageType: '',
-    courseImageData: null,
-  };
+  selectedCourse: Course = this.initializeCourse();
   isEditMode = false;
   imageFile: File | null = null;
   imagePreview: string | null = null;
@@ -46,7 +38,7 @@ export class CourseAdminComponent implements OnInit {
           isEditing: false,
           image: `data:${course.courseImageType};base64,${course.courseImageData}`
         }));
-        this.filteredCourses = [...this.courses]; // Initialize filtered courses with all courses
+        this.filteredCourses = [...this.courses]; 
       },
       error: (err) => {
         console.error("Failed to load courses", err);
@@ -54,11 +46,27 @@ export class CourseAdminComponent implements OnInit {
     });
   }
 
+  initializeCourse(): Course {
+    return {
+      courseId: 0,
+      courseName: '',
+      description: '',
+      subjects: '',
+      courseFee: 0,
+      courseImageName: '',
+      courseImageType: '',
+      courseImageData: null,
+    };
+  }
+  triggerFileInput(): void {
+    this.fileInput.nativeElement.click();
+  }
   saveCourse(): void {
     const fileToUpload = this.imageFile || undefined; 
     if (this.isEditMode) {
       this.courseService.updateCourse(this.selectedCourse, fileToUpload).subscribe(() => {
         this.loadCourses();
+        alert('Course updated Successfully...');
         this.clearForm();
       });
     } else {
@@ -68,22 +76,22 @@ export class CourseAdminComponent implements OnInit {
       });
     }
   }
+
   
   editCourse(course: Course): void {
     this.selectedCourse = { ...course };
     this.isEditMode = true;
   }
-  onFileSelect(event: any): void {
-    const selectedFiles = event.target.files;
-    this.imageFile = selectedFiles && selectedFiles[0] ? selectedFiles[0] : null;
-    if (this.imageFile) {
+  onImageSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const selectedFile = input.files[0];
+      this.imageFile = selectedFile; 
       const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.imagePreview = e.target.result; 
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.imagePreview = e.target?.result as string; 
       };
-      reader.readAsDataURL(this.imageFile);
-    } else {
-      this.imagePreview = null; 
+      reader.readAsDataURL(selectedFile);
     }
   }
 
@@ -104,6 +112,7 @@ export class CourseAdminComponent implements OnInit {
   
   deleteCourse(id: number): void {
     this.courseService.deleteCourseById(id).subscribe(() => {
+      alert('Delete Successfully...');
       this.loadCourses();
     });
   }
@@ -113,6 +122,7 @@ export class CourseAdminComponent implements OnInit {
         ...course,
         imagePreview: course.courseImageData ? `data:${course.courseImageType};base64,${course.courseImageData}` : null
       }));
+      this.filteredCourses = [...this.courses]; 
     });
   }
 
@@ -165,6 +175,7 @@ export class CourseAdminComponent implements OnInit {
       next: () => {
         course.isEditing = false;
         console.log("Course updated successfully");
+        alert('Course updated Successfully...');
       },
       error: (err) => {
         console.error("Failed to update course", err);
@@ -172,3 +183,5 @@ export class CourseAdminComponent implements OnInit {
     });
   }
 }
+
+

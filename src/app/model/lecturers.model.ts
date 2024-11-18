@@ -1,5 +1,5 @@
 export class Lecturer {
-    lecturer_id?: number;             
+    lecturer_id: number=0;             
     lecturerName: string;
     lecturerExperience: string;
     lecturerDegrees: string;

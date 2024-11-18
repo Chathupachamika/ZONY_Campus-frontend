@@ -1,0 +1,13 @@
+<div class="bot-container">
+    <h1>Chat with Custom Bot</h1>
+    <div class="chat-box">
+      <div *ngFor="let message of chatHistory" [ngClass]="{'user-message': message.role === 'user', 'bot-message': message.role === 'assistant'}">
+        <p>{{ message.content }}</p>
+      </div>
+    </div>
+    <div class="chat-input">
+      <textarea [(ngModel)]="userInput" placeholder="Type your message here..."></textarea>
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+  

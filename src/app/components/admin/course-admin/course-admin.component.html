@@ -1,4 +1,30 @@
 <app-header-admin></app-header-admin>
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card1 text-white bg-dark shadow-lg">
+        <img class="card1-img1" style="opacity: 0.; object-fit: cover; height: 400px;">
+        <div class="card1-img1-overlay d-flex flex-column justify-content-center align-items-center text-center">
+          <h2 class="card1-title fw-bold display-4 text-uppercase text-light">
+            Explore Our Courses
+          </h2>
+          <p class="card-text fs-5 mt-3">
+            Discover a wide range of courses designed to equip you with the skills and knowledge to succeed. 
+            From cutting-edge technology and business strategies to arts and sciences, we provide comprehensive 
+            learning opportunities tailored to your goals.
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Wikipedia:Education_program/Courses" class="btn btn-outline-light mt-4 px-4 py-2">
+            <i class="bi bi-arrow-right-circle me-2"></i> Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br>
+<h1 class="h1eka">MORE DETAILS ABOUT Courses</h1>
+<br><p class="Courses-description">
+  Our esteemed Courses are dedicated to providing high-quality education and fostering academic growth. Each Courses brings years of expertise, innovative teaching methods, and cutting-edge research to create an environment where students can excel. With diverse specializations ranging from science and technology to arts and humanities, our faculties are committed to preparing students for impactful careers in a rapidly changing world.
+</p><hr>
 <div id="courseCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item" *ngFor="let course of courses; let i = index" [ngClass]="{'active': i === 0}">
@@ -36,13 +62,10 @@
     </button>
   </div>
   
-  
-    <!-- Show All Button -->
     <div class="show-all-container">
       <button class="btn btn-primary show-all-button" (click)="showAllCourses()">Show All</button>
     </div>
   
-    <!-- Mini Window with Filter Options -->
     <div *ngIf="showMiniWindow" class="mini-window">net start MySQL80
 
         <div class="mini-window-header">
@@ -62,9 +85,7 @@
             <img
               *ngIf="course.courseImageData"
               [src]="'data:image/jpeg;base64,' + course.courseImageData" 
-              width="70" 
-          height="70" 
-          class="rounded-circle">
+          class="d-block w-75 mx-auto">
             <div class="card-body">
               <h6 *ngIf="!course.isEditing" class="card-title">{{ course.courseName }}</h6>
               <input
@@ -94,7 +115,6 @@
                 class="form-control mb-2"
                 placeholder="Description"></textarea>
           
-              <!-- Buttons -->
               <button
                 *ngIf="!course.isEditing"
                 class="btn btn-primary"
@@ -113,112 +133,132 @@
         </div>
         </div>
       
-        <div class="course-container container my-5 p-4 bg-light shadow-lg rounded">
-          <h2 class="text-center mb-4 text-primary">
-            <i class="bi bi-book"></i> Course Management
-          </h2>
+    
+      <div class="course-container container my-5 p-4 shadow-lg rounded">
+        <div class="edit">
+        <h1 class="text-center mb-4 text-primary" style="padding-top:20px; border-radius:20px;">
+          <b><i class="bi bi-book"></i> Course Management</b>
+        </h1>
+      
         
-          <!-- Add/Update Course Form -->
-          <form (ngSubmit)="saveCourse()" class="course-form bg-white p-4 rounded shadow-sm mb-5">
-            <div class="form-group mb-3">
-              <label for="courseName" class="form-label">Course Name</label>
-              <input
-                type="text"
-                id="courseName"
-                [(ngModel)]="selectedCourse.courseName"
-                name="name"
-                class="form-control"
-                placeholder="Enter Course Name"
-                required
-              />
+        <form (ngSubmit)="saveCourse()" class="course-form p-4 rounded shadow-sm mb-5">
+          <div class="form-group mb-3">
+            <label for="courseName" class="form-label">Course Name</label>
+            <input
+              type="text"
+              id="courseName"
+              [(ngModel)]="selectedCourse.courseName"
+              name="name"
+              class="form-control"
+              placeholder="Enter Course Name"
+              required
+            />
+          </div>
+        
+          <div class="form-group mb-3">
+            <label for="courseFee" class="form-label">Course Fee</label>
+            <input
+              type="text"
+              name="courseFee"
+              [(ngModel)]="selectedCourse.courseFee"
+              id="fee"
+              class="form-control"
+              placeholder="Enter Course Fee"
+              required
+            />
+          </div>
+        
+          <div class="form-group mb-3">
+            <label for="courseSubjects" class="form-label">Course Subjects</label>
+            <input
+              type="text"
+              id="courseSubjects"
+              [(ngModel)]="selectedCourse.subjects"
+              name="subjects"
+              class="form-control"
+              placeholder="Enter Course Subjects"
+              required
+            />
+          </div>
+        
+          <div class="form-group mb-3">
+            <label for="courseDescription" class="form-label">Course Description</label>
+            <input
+              type="text"
+              id="courseDescription"
+              [(ngModel)]="selectedCourse.description"
+              name="description"
+              class="form-control"
+              placeholder="Enter Course Description"
+              required
+            />
+          </div>
+        
+          <div class="text-center mb-3 position-relative" style="width: 150px; height: 150px;">
+            <img
+              *ngIf="imagePreview || selectedCourse?.courseImageData"
+              [src]="imagePreview || ('data:image/jpeg;base64,' + selectedCourse.courseImageData)"
+              alt="Course Image"
+              class="rounded-circle border border-light"
+              style="object-fit: cover; width: 100%; height: 100%;"
+            />
+            <div
+              class="camera-icon-overlay"
+              (click)="triggerFileInput()"
+              style="position: absolute; bottom: 10px; right: 10px; cursor: pointer; background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; padding: 5px;"
+            >
+              <i class="bi bi-camera text-white"></i>
             </div>
+            <input
+              type="file"
+              accept="image/*"
+              (change)="onImageSelected($event)"
+              #fileInput
+              style="display: none;"
+            />
+          </div>
         
-            <div class="form-group mb-3">
-              <label for="courseDescription" class="form-label">Course Description</label>
-              <input
-                type="text"
-                id="courseDescription"
-                [(ngModel)]="selectedCourse.description"
-                name="description"
-                class="form-control"
-                placeholder="Enter Course Description"
-                required
-              />
-            </div>
-        
-            <div class="form-group mb-3">
-              <label class="form-label">Course Image</label>
-              <div class="image-preview-container text-center" *ngIf="selectedCourse.courseImageData">
-                <img
-[src]="'data:image/jpeg;base64,' + selectedCourse.courseImageData"
-                  class="rounded-circle img-fluid shadow"
-                  width="120"
-                  height="120"
-                />
-                <img
-                  *ngIf="!imagePreview"
-                  src="path/to/default-image.png"
-                  class="rounded-circle img-fluid shadow"
-                  width="120"
-                  height="120"
-                />
-                <div class="camera-icon-container">
-                  <label for="fileInput">
-                    <i class="fa fa-camera camera-icon"></i>
-                  </label>
-                  <input
-                    id="fileInput"
-                    type="file"
-                    (change)="onFileSelect($event)"
-                    class="d-none"
-                    accept="image/*"
-                  />
-                </div>
-              </div>
-            </div>
-            
-        
-            <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-success me-2">
-                <i class="bi bi-check-circle"></i> {{ isEditMode ? 'Update' : 'Add' }}
-              </button>
-              <button type="button" (click)="clearForm()" class="btn btn-outline-secondary">
-                <i class="bi bi-x-circle"></i> Clear
-              </button>
-            </div>
-          </form>
-        
-          <!-- Course List -->
-          <table class="course-table table table-striped table-hover text-center">
-            <thead class="table-primary">
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Subjects</th>
-                <th>Course Fee</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let course of courses">
-                <td>{{ course.courseId }}</td>
-                <td>{{ course.courseName }}</td>
-                <td>{{ course.description }}</td>
-                <td>{{ course.subjects }}</td>
-                <td>{{ course.courseFee }}</td>
-                <td>
-                  <button (click)="editCourse(course)" class="btn btn-warning btn-sm me-2">
-                    <i class="bi bi-pencil-square"></i> Edit
-                  </button>
-                  <button (click)="deleteCourse(course.courseId)" class="btn btn-danger btn-sm">
-                    <i class="bi bi-trash"></i> Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success me-2">
+              <i class="bi bi-check-circle"></i> {{ isEditMode ? 'Update' : 'Add' }}
+            </button>
+            <button type="button" (click)="clearForm()" class="btn btn-outline-secondary ">
+              <i class="bi bi-x-circle"></i> Clear
+            </button>
+          </div>
+        </form></div><br><hr>
+      
+        <table class="course-table table table-striped table-hover text-center">
+          <thead class="table-primary">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Subjects</th>
+              <th>Course Fee</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of courses">
+              <td>{{ course.courseId }}</td>
+              <td>{{ course.courseName }}</td>
+              <td>{{ course.description }}</td>
+              <td>{{ course.subjects }}</td>
+              <td>{{ course.courseFee }}</td>
+              <td>
+                <button (click)="editCourse(course)" class="btn btn-warning btn-sm me-2">
+                  <i class="bi bi-pencil-square"></i> Edit
+                </button>
+                <button (click)="deleteCourse(course.courseId)" class="btn btn-danger btn-sm">
+                  <i class="bi bi-trash"></i> Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+    </div>
         
 <app-sidebar-admin></app-sidebar-admin>
 <app-footer></app-footer>
