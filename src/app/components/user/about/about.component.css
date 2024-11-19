@@ -32,29 +32,6 @@
   background-position: center;
   background-repeat: no-repeat; 
 }
-.bd-placeholder5{
-  background-image: url('../../../../assets/img/2rawuma.png');  
-  background-size:contain; 
-  border-radius: 80px;
-  margin-top: 10px;
-  background-repeat: no-repeat;
-}
-.bd-placeholder6{
-  background-image: url('../../../../assets/img/1rawuma.png');  
-  background-size:contain; 
-  border-radius: 80px;
-  margin-top: 10px;
-  background-repeat: no-repeat;
-
-}
-
-.bd-placeholder7{
-  background-image: url('../../../../assets/img/3rawuma.png');  
-  background-size:contain; 
-  border-radius: 80px;
-  margin-top: 10px;
-  background-repeat: no-repeat;
-}
 
 .vision-mission-container {
   margin-left: 20px;
@@ -89,7 +66,7 @@
 }
 
 .section-vision {
-  background-image: linear-gradient(to right, rgba(192, 188, 188, 0.61) 50%, rgba(27, 23, 23, 0.685)), url('../../../../assets/img/vision.jpg');
+  background-image: linear-gradient(to right, rgba(179, 165, 165, 0.61) 50%, rgba(27, 23, 23, 0.685)), url('../../../../assets/img/vision.jpg');
 }
 
 .section-mission {
@@ -99,6 +76,50 @@
 .text-content {
   padding: 40px;
   width: 50%;
+}
+.quality-policy {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.quality-policy h2 {
+  text-align: center;
+  color: #333;
+}
+
+.quality-policy p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.quality-policy ul {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.quality-policy ul li {
+  margin-bottom: 10px;
+}
+
+.quality-policy button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quality-policy button:hover {
+  background-color: #0056b3;
 }
 
 .text-content h2 {

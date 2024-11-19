@@ -124,6 +124,13 @@ export class ProfileViewService {
     this.userDetailsByReg = null;
     console.log('User logged out');
   }
+  getLastLoggedInUsers(count: number): Observable<UserDetails[]> {
+    const url = `http://localhost:9090/register/get-last-users/${count}`; // Adjust endpoint based on your backend
+    return this.http.get<UserDetails[]>(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
 }
 
 

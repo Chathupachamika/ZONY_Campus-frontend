@@ -15,9 +15,8 @@
         <svg class="bd-placeholder" width="100%" height="650px" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
+            <h1>ZONY headline.</h1>
             <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
           </div>
         </div>
       </div>
@@ -25,9 +24,8 @@
         <svg class="bd-placeholder1" width="100%" height="650px" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
+            <h1>Another ZONY headline.</h1>
             <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
           </div>
         </div>
       </div>
@@ -37,7 +35,6 @@
           <div class="carousel-caption text-end">
             <h1>One more for good measure.</h1>
             <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
           </div>
         </div>
       </div>
@@ -54,30 +51,26 @@
   </main>
 </div>
 <div class="container" style="margin-top: 90px; background-color: rgba(240, 248, 255, 0.329); padding-top: 8px; border-radius: 30px; padding-left: 5px; padding-right: 5px;">
-<h1 style="text-align: center; font-weight: bold; ">TOP USERS</h1>
-  <div class="container marketing" style="padding-top: 20px; padding-bottom: 20px;">
-
-    <div class="row" style="gap: 20px; height: 300px;">
-      <div class="col-lg-4" style="background-color: rgba(185, 249, 195, 0.491); border-radius: 40px; width: 380px; margin-left: 50px;">
-        <svg class="bd-placeholder6" width="160" height="160" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-        <h2 class="fw-normal">Heading</h2>
-        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div>
-      <div class="col-lg-4" style="background-color: rgba(171, 219, 253, 0.491); border-radius: 40px; width: 380px; margin-left: 10px;">
-        <svg class="bd-placeholder5" width="160" height="160" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-        <h2 class="fw-normal">Heading</h2>
-        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div>
-      <div class="col-lg-4" style="background-color: rgba(219, 162, 233, 0.491); border-radius: 40px; width: 380px; margin-left: 10px;">
-        <svg class="bd-placeholder7" width="160" height="160" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-        <h2 class="fw-normal">Heading</h2>
-        <p>And lastly this, the third column of representative placeholder content.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div>
+<h1 style="text-align: center; font-weight: bold; ">RECENT USERS</h1>
+<div class="container marketing" style="padding-top: 20px; padding-bottom: 20px; overflow-x: auto;">
+  <div class="row flex-nowrap" style="gap: 20px; height: 300px;">
+    <div 
+  class="col-lg-4 d-flex flex-column align-items-center" 
+  style="background-color: rgba(185, 249, 195, 0.491); border-radius: 40px; width: 380px; min-width: 380px; margin-right: 20px; border: 2px solid #4CAF50;"
+   *ngFor="let user of recentUsers">
+      <img 
+        [src]="'data:image/jpeg;base64,' + user.imageData || 'placeholder-image.jpg'" 
+        alt="{{ user.fullName }}" 
+        width="160" 
+        height="160" 
+        style="border-radius: 50%;" />
+      <h2 class="fw-normal">{{ user.fullName }}</h2>
+      <p>Email: {{ user.email }}</p>
+      <p>Address: {{ user.address }}</p>
     </div>
   </div>
+</div>
+
 </div>
     <hr class="featurette-divider">
     <div class="vision-mission-container">
@@ -96,7 +89,37 @@
           </div>
         </div> </section>
       </div>
-   
+  
+</div>
+<div class="quality-policy">
+  <h2>OUR QUALITY POLICY</h2>
+  <p>
+      The Quality Policy of National Institute of Business Management is as follows.
+      We at National Institute of Business Management seek to delight our customers by offering highest quality Degree, Higher Diploma, Diploma and Certificate courses, and ensure that we meet and exceed customer specific requirements and expectations.
+  </p>
+  <p>
+      In order to accomplish this we maintain a quality management system conforming to ISO 9001:2015 international standards.
+  </p>
+  <p>
+      We are committed to:
+  </p>
+  <ul>
+      <li>Excell in the provision of our products & services</li>
+      <li>Meet speed and quality of services at the most competitive cost</li>
+      <li>Continually innovate and improve our services</li>
+  </ul>
+  <p>
+      To achieve the above-mentioned objectives, we will:
+  </p>
+  <ul>
+      <li>Set and deploy SMART objectives to identify and improve our Marketing, Customer Management, Enrollments, Course Design and Development, Academic Support, Delivery, Library, Evaluations and Awarding Processes benchmarked to global standards.</li>
+      <li>Design an organizational structure in accordance with state-of-the-art technology.</li>
+      <li>Align ourselves with the best management Consultants available in the industry.</li>
+      <li>Design and implement well-structured training programs for all our academic / non-academic staff.</li>
+      <li>Instill an organizational culture that continually reacts to all risks and opportunities arising in the internal and external contexts and among our key stakeholders.</li>
+      <li>Maintain and improve the effectiveness of our Quality Management System (CMS) Continually.</li>
+  </ul>
+  <!-- <button (click)="downloadQualityPolicy(report)">DOWNLOAD QUALITY POLICY</button> -->
 </div>
 <app-footer></app-footer>
 <app-sidebar></app-sidebar>

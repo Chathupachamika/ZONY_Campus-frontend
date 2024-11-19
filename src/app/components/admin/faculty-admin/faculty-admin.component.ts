@@ -59,10 +59,6 @@ export class FacultyAdminComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!this.authService.isLoggedIn()) {
-      this.router.navigate(['/login']);
-      return;
-    }
     this.facultyService.getFaculties().subscribe((data) => {
       this.faculties = data; 
       this.filteredFaculties = [...this.faculties];

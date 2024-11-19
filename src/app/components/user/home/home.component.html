@@ -1,139 +1,136 @@
 <app-header></app-header>
 <div class="user-form">
-  <div class="card mb-3 shadow-sm user-info-card" style="width: 34rem; background-color:#ebf0f3;" *ngIf="userDetails">
-    <div class="card-body d-flex align-items-start">
-      <div class="me-3">
-        <img 
-          [src]="'data:image/jpeg;base64,' + userDetails.imageData" 
-          alt="User Image" 
-          width="70" 
-          height="70" 
-          class="rounded-circle">
+  <div class="card mb-3 shadow-sm user-info-card spacing-top" style="width: 28rem; background-color:#ebf0f3;" *ngIf="userDetails">
+      <div class="card-body d-flex align-items-start">
+        <div class="me-3">
+          <img 
+            [src]="'data:image/jpeg;base64,' + userDetails.imageData" 
+            alt="User Image" 
+            width="70" 
+            height="70" 
+            class="rounded-circle">
+        </div>
+        <div>
+          <h2 class="text-muted">
+            <i class="bi bi-person-circle me-2" style="color: rgb(223, 124, 12);"></i>Logged in user
+          </h2>
+          <hr>
+          <h3 class="card-title mb-2">ZC24{{ userDetails.reg_id }} {{ userDetails.fullName }}</h3>
+          <p class="mb-0"><strong>Country : </strong> {{ userDetails.country }}</p>
+          <p class="mb-0"><strong>Phone : </strong> {{ userDetails.mobile }}</p>
+          <p class="mb-0"><strong>Email address : </strong> <a href="mailto:{{userDetails.email}}" style="color: #060708;"> {{ userDetails.email }} </a></p>
+        </div>
       </div>
-      <div>
-        <h2 class="text-muted">
-          <i class="bi bi-person-circle me-2" style="color: rgb(223, 124, 12);"></i>Logged in user
-        </h2>
-        <hr>
-        <h3 class="card-title mb-2">ZC24{{ userDetails.reg_id }} {{ userDetails.fullName }}</h3>
-        <p class="mb-0"><strong>Country : </strong> {{ userDetails.country }}</p>
-        <p class="mb-0"><strong>Phone : </strong> {{ userDetails.mobile }}</p>
-        <p class="mb-0"><strong>Email address : </strong> <a href="mailto:{{userDetails.email}}" style="color: #060708;"> {{ userDetails.email }} </a></p>
-      </div>
-    </div>
-  
-    <div class="card-body mt-6">
-      <h3 class="text-primary"><b>LMS Support Service</b></h3>
-      <p>Welcome to Zony Learning Management System. If you have any inquiries regarding LMS please contact us.</p>
-      <p class="mb-1">
-        <i class="bi bi-envelope-fill me-2" style="font-size: 1.5rem; color: #438b5f;"></i>
-        <a href="mailto:chathupachamika765@gmail.com" style="color: #060708;"> admin.Ranil.com </a>
-      </p>
-      <p class="mb-1">
-        <i class="bi bi-telephone-fill me-2" style="font-size: 1.5rem; color: #dc3545;"></i> +94 75 427 8741 </p>
-      <p class="mb-0">
-        <i class="bi bi-clock-fill me-2" style="font-size: 1.5rem; color: #7d9e40;"></i> 
-        8.00AM - 5.00PM
-      </p>
-      
-    </div>
-  </div>
-  
-</div>
-<section class="why-nibm">
-  <h1 class="section-title" style="font-size: 2rem; color: rgb(17, 72, 121); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">WHY ZONY</h1>
-  <h2 class="main-heading" style="font-size: 2rem; color: rgb(15, 51, 83);">ZONY is the Leading Smart Campus Management System in Sri Lanka</h2>  
-  <div class="stats-grid">
-    <div class="stat-item">
-      <h1 class="number" #number>55 Years</h1>
-      <p class="description">of excellence in the Higher Education Industry.Since our founding in 1969, we have been dedicated to advancing knowledge, fostering innovation, 
-        and making a positive impact on the global educational landscape.</p>
-        <h2><i class="bi bi-kanban" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
-    </div>
-    <div class="stat-item">
-      <h1 class="number" #number>5 Foreign Partnerships</h1>
-      <p class="description">with top ranked universities in the world.Since our founding in 1969, we have been dedicated to advancing knowledge, fostering innovation, 
-        and making a positive impact on the global educational landscape.</p>
-        <h2><i class="bi bi-globe-americas" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
-    </div>
-    <div class="stat-item">
-      <h1 class="number" #number>8 Professional Partnerships</h1>
-      <p class="description">with the Highly Competitive Industries across the globe.Since our founding in 1969, we have been dedicated to advancing knowledge, global educational landscape.</p>
-        <h2><i class="bi bi-person-workspace" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
-    </div>
-    <div class="stat-item">
-      <h1 class="number" #number>7 Campuses</h1>
-      <p class="description">located across the country for easy access to quality education.Since our founding in 1969, we have been dedicated to advancing knowledge, fostering innovation, 
-        and making a positive impact on the global educational landscape.</p>
-        <h2><i class="bi bi-mortarboard" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
-    </div>
-    <div class="stat-item">
-      <h1 class="number" #number>200 Qualified Lecture Panel</h1>
-      <p class="description">of industry experts and academics.Since our founding in 1969, fostering innovation, 
-        and making a positive impact on the global educational landscape.</p>
-      <h2><i class="bi bi-patch-check" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
-    </div>
-  </div>
-</section>
-
-<section class="faculties">
-  <h2 style="font-size: 2rem; font-weight: bold; color: rgb(10, 63, 109); padding-left: 40px; font-size:50px;">FACULTIES</h2>
-  <div class="faculty-grid">
-    <div class="faculty-card" *ngFor="let faculty of displayedFaculties">
-      <div class="icon">{{faculty.icon}}</div>
-      <h3 style="color: rgb(11, 11, 71);">{{faculty.name}}</h3>
-      <p>ZONY School of {{faculty.name}} is at the cutting edge of {{faculty.name}} education and research. We offer a range of programmes that enable prospective students to start at practically any prior educational level. Our courses cover various specializations including {{faculty.specializations}}. Join us to explore innovative learning opportunities and gain skills for future careers.</p>
-      <a href="/faculties" class="view-courses">View All Details→</a>
-    </div>
-  </div>
-  <div *ngIf="!showAll" class="show-all">
-    <a (click)="showAllFaculties()" class="view-all">Show All Faculties →</a>
-  </div>
-</section>
-
-<section class="news-events">
-  <div class="events-section">
-    <h2>UPCOMING EVENTS</h2>
-    <div class="event-card">
-      <div class="event-date">
-        <span class="day">18</span>
-        <span class="month">DEC</span>
-      </div>
-      <div class="event-details">
-        <h3>ZONY Frozen Fest 2024</h3>
-        <p>18 DECEMBER 2024</p>
-      </div>
-    </div>
-    <a href="/events" class="all-news-link">ALL NEWS →</a>
-  </div>
-
-  <div class="news-section">
-    <div class="news-header">
-      <h1 style="color: rgb(20, 49, 75); font-weight: bold; font-size: 50px;">Upcoming Programmes</h1>
-      <a href="/program" class="all-news-link">ALL Programmes →</a>
-    </div>
     
-    <div class="news-grid">
-      <div *ngFor="let program of program" class="news-card">
-        <img 
-          *ngIf="program.programImageData"
-          [src]="'data:image/' + program.programImageType + ';base64,' + program.programImageData"
-          alt="{{ program.programName }}"
-          class="program-image"
-        />
-        <div class="news-content">
-          <h3>{{ program.programName }}</h3>
-          <p class="date">{{ program.programDateTime | date: 'longDate' }} - {{ program.programVenue }}</p>
-          <p>{{ program.programMission }} {{ program.programDetails | slice:0:100 }}...</p>
+      <div class="card-body mt-6">
+        <h3 class="text-primary"><b>LMS Support Service</b></h3>
+        <p>Welcome to Zony Learning Management System. If you have any inquiries regarding LMS please contact us.</p>
+        <p class="mb-1">
+          <i class="bi bi-envelope-fill me-2" style="font-size: 1.5rem; color: #438b5f;"></i>
+          <a href="mailto:chathupachamika765@gmail.com" style="color: #060708;"> admin.Ranil.com </a>
+        </p>
+        <p class="mb-1">
+          <i class="bi bi-telephone-fill me-2" style="font-size: 1.5rem; color: #dc3545;"></i> +94 75 427 8741 </p>
+        <p class="mb-0">
+          <i class="bi bi-clock-fill me-2" style="font-size: 1.5rem; color: #7d9e40;"></i> 
+          8.00AM - 5.00PM
+        </p>
+        
+      </div>
+    </div>
+  </div>
+  <section class="why-nibm">
+    <h1 class="section-title" style="font-size: 2rem; color: rgb(17, 72, 121); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">WHY ZONY</h1>
+    <h2 class="main-heading" style="font-size: 2rem; color: rgb(15, 51, 83);">ZONY is the Leading Smart Campus Management System in Sri Lanka</h2>  
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h1 class="number" #number>55 Years</h1>
+        <p class="description">of excellence in the Higher Education Industry.Since our founding in 1969, we have been dedicated to advancing knowledge, fostering innovation, 
+          and making a positive impact on the global educational landscape.</p>
+          <h2><i class="bi bi-kanban" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
+      </div>
+      <div class="stat-item">
+        <h1 class="number" #number>5 Foreign Partnerships</h1>
+        <p class="description">with top ranked universities in the world.Since our founding in 1969, we have been dedicated and landscape.</p>
+          <h2><i class="bi bi-globe-americas" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
+      </div>
+      <div class="stat-item">
+        <h1 class="number" #number>8 Professional Partnerships</h1>
+        <p class="description">with the Highly Competitive Industries across the globe.Since our founding in 1969, advancing knowledge, global educational landscape.</p>
+          <h2><i class="bi bi-person-workspace" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
+      </div>
+      <div class="stat-item">
+        <h1 class="number" #number>7 Campuses</h1>
+        <p class="description">located across the country for easy access to quality education.Since our founding in 1969, we have been dedicated to advancing knowledge, fostering innovation, 
+          and making a positive impact on the global educational landscape.</p>
+          <h2><i class="bi bi-mortarboard" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
+      </div>
+      <div class="stat-item">
+        <h1 class="number" #number>200 Qualified Lecture Panel</h1>
+        <p class="description">of industry experts and academics.Since our founding in 1969, fostering innovation, 
+          and making a positive impact on the global educational landscape.</p>
+        <h2><i class="bi bi-patch-check" style="color: #438b5f; font-size:30px; margin-left:220px;"></i></h2>
+      </div>
+    </div>
+  </section>
+  <br><hr>
+  <section class="faculties">
+    <h2 style="font-size: 2rem; font-weight: bold; color: rgb(10, 63, 109); padding-left: 40px; font-size:50px;">FACULTIES</h2>
+    <div class="faculty-grid">
+      <div class="faculty-card" *ngFor="let faculty of displayedFaculties">
+        <div class="icon">{{faculty.icon}}</div>
+        <h3 style="color: rgb(11, 11, 71);">{{faculty.name}}</h3>
+        <p>ZONY School of {{faculty.name}} is at the cutting edge of {{faculty.name}} education and research. We offer a range of programmes that enable prospective students to start at practically any prior educational level. Our courses cover various specializations including {{faculty.specializations}}. Join us to explore innovative learning opportunities and gain skills for future careers.</p>
+        <a href="/faculties" class="view-courses">View All Details→</a>
+      </div>
+    </div>
+    <div *ngIf="!showAll" class="show-all">
+      <a (click)="showAllFaculties()" class="view-all">Show All Faculties →</a>
+    </div>
+  </section>
+  
+  <section class="news-events">
+    <div class="events-section">
+      <h2>UPCOMING EVENTS</h2>
+      <div class="event-card">
+        <div class="event-date">
+          <span class="day">18</span>
+          <span class="month">DEC</span>
+        </div>
+        <div class="event-details">
+          <h3>ZONY Frozen Fest 2024</h3>
+          <p>18 DECEMBER 2024</p>
+        </div>
+      </div>
+      <a href="/events" class="all-news-link">ALL NEWS →</a>
+    </div>
+  
+    <div class="news-section">
+      <div class="news-header">
+        <h1 style="color: rgb(20, 49, 75); font-weight: bold; font-size: 50px;">Upcoming Programmes</h1>
+        <a href="/program" class="all-news-link">ALL Programmes →</a>
+      </div>
+      
+      <div class="news-grid">
+        <div *ngFor="let program of program" class="news-card">
+          <img 
+            *ngIf="program.programImageData"
+            [src]="'data:image/' + program.programImageType + ';base64,' + program.programImageData"
+            alt="{{ program.programName }}"
+            class="program-image"
+          />
+          <div class="news-content">
+            <h3>{{ program.programName }}</h3>
+            <p class="date">{{ program.programDateTime | date: 'longDate' }} - {{ program.programVenue }}</p>
+            <p>{{ program.programMission }} {{ program.programDetails | slice:0:100 }}...</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-  <div class="calendar-section" style="width: 450px; background-color:aliceblue; margin-top:100px; margin-left: 900px;">
-    <full-calendar [options]="calendarOptions"></full-calendar>
-  </div>
-
+  </section>
+  
+    <div class="calendar-section" style="width: 450px; background-color:aliceblue; margin-top:100px; margin-left: 900px;">
+      <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
 <app-footer></app-footer>
 <app-sidebar></app-sidebar>

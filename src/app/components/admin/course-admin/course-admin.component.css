@@ -164,7 +164,7 @@
 }
 
 .course-card {
-    width: calc(33.33% - 10px); /* 3 cards per row with gap */
+    width: calc(31.33% - 10px); /* 3 cards per row with gap */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
