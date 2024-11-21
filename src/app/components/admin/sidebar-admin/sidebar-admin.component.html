@@ -1,4 +1,4 @@
-<div class="sidebar" style="padding-top: 10px;" [class.sidebar-expanded]="isExpanded">
+<div class="sidebar" [class.sidebar-expanded]="isExpanded">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <svg class="bi pe-none me-2" width="40" height="32">
@@ -15,9 +15,7 @@
         <li><a href="/admin/faculty-admin" class="nav-link text-white"><i class="bi bi-clipboard2-data me-4"></i>Faculties</a></li>
         <li><a href="/admin/program-admin" class="nav-link text-white"><i class="bi bi-calendar2-event me-4"></i>Programmes</a></li>
         <li><a href="/admin/zonar" class="nav-link text-white"><i class="bi bi-cup-hot me-4"></i>Zonar</a></li>
-        <li><a href="#" class="nav-link text-white"><i class="bi bi-hourglass-split me-4"></i>Life At ZONY</a></li>
         <li><a href="/admin/course-admin" class="nav-link text-white"><i class="bi bi-telephone me-4"></i>Courses</a></li>
-        <li><a href="#" class="nav-link text-white"><i class="bi bi-door-open me-4"></i>Apply Now</a></li>
         <li><a href="/login" class="nav-link text-white" (click)="logOut()"><i class="bi bi-box-arrow-in-left me-4"></i>Log Out</a></li>
       </ul>
       <hr>

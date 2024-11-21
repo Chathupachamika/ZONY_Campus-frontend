@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import jsPDF from 'jspdf';
 import { Course } from '../../../model/course.model';
 import { CourseService } from '../../../service/course.service';
 import { FooterComponent } from "../../user/footer/footer.component";
@@ -53,6 +54,7 @@ export class CourseAdminComponent implements OnInit {
       description: '',
       subjects: '',
       courseFee: 0,
+      fulDetails: '',
       courseImageName: '',
       courseImageType: '',
       courseImageData: null,
@@ -102,6 +104,7 @@ export class CourseAdminComponent implements OnInit {
       description: '',
       subjects: '',
       courseFee: 0,
+      fulDetails:'',
       courseImageName: '',
       courseImageType: '',
       courseImageData: null,
@@ -181,6 +184,52 @@ export class CourseAdminComponent implements OnInit {
         console.error("Failed to update course", err);
       }
     });
+  }
+
+  async downloadCoursePDF(course: Course): Promise<void> {
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.width;
+    doc.setFontSize(18);
+    doc.text('Course Details', pageWidth / 2, 20, { align: 'center' });
+    let currentY = 40; 
+    const lineHeight = 10;
+    if (course.courseImageData) {
+      try {
+        const imgBase64 = `data:${course.courseImageType};base64,${course.courseImageData}`;
+        const imgWidth = 50;
+        const imgHeight = 50;
+        const imgX = (pageWidth - imgWidth) / 2;
+        doc.addImage(imgBase64, 'JPEG', imgX, currentY, imgWidth, imgHeight);
+        currentY += imgHeight + 10; 
+      } catch (error) {
+        console.error('Error loading image:', error);
+        doc.setFontSize(12);
+        doc.text('Image not available', pageWidth / 2, currentY, { align: 'center' });
+        currentY += lineHeight;
+      }
+    }
+    doc.setFontSize(12);
+    doc.text(`Course Name: ${course.courseName}`, 20, currentY);
+    currentY += lineHeight;
+    
+    doc.text(`Subject: ${course.subjects}`, 20, currentY);
+    currentY += lineHeight;
+    
+    doc.text(`Course Fee: ${course.courseFee}`, 20, currentY);
+    currentY += lineHeight;
+    const splitDescription = doc.splitTextToSize(`Description: ${course.description}`, pageWidth - 40);
+    doc.text(splitDescription, 20, currentY);
+    currentY += lineHeight * splitDescription.length;
+    if (course.fulDetails) {
+      currentY += lineHeight; 
+      const splitDetails = doc.splitTextToSize(`${course.fulDetails}`, pageWidth - 40);
+      doc.text(splitDetails, 20, currentY);
+      currentY += lineHeight * splitDetails.length;
+    }
+    doc.setFontSize(10);
+    const today = new Date().toLocaleDateString();
+    doc.text(`Generated on: ${today}`, 20, doc.internal.pageSize.height - 20);
+    doc.save(`${course.courseName.replace(/\s+/g, '_')}_details.pdf`);
   }
 }
 

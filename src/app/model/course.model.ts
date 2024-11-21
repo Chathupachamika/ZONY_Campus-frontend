@@ -3,6 +3,7 @@ export interface Course {
     courseName: string;
     subjects: string;
     courseFee: number;
+    fulDetails: string;
     description: string;
     courseImageName: string;
     courseImageType: string;

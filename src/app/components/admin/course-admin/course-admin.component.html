@@ -86,40 +86,48 @@
               *ngIf="course.courseImageData"
               [src]="'data:image/jpeg;base64,' + course.courseImageData" 
           class="d-block w-75 mx-auto">
-            <div class="card-body">
-              <h6 *ngIf="!course.isEditing" class="card-title">{{ course.courseName }}</h6>
-              <input
-                *ngIf="course.isEditing"
-                [(ngModel)]="course.courseName"
-                class="form-control mb-2"
-                placeholder="Course Name" />
+          <div class="card-body">
+            <h6 *ngIf="!course.isEditing" class="card-title">{{ course.courseName }}</h6>
+            <input
+              *ngIf="course.isEditing"
+              [(ngModel)]="course.courseName"
+              class="form-control mb-2"
+              placeholder="Course Name" />
           
-              <p *ngIf="!course.isEditing">Subject: {{ course.subjects }}</p>
-              <input
-                *ngIf="course.isEditing"
-                [(ngModel)]="course.subjects"
-                class="form-control mb-2"
-                placeholder="Subject" />
-
-                <p *ngIf="!course.isEditing">Course Fee: {{ course.courseFee }}</p>
-              <input
-                *ngIf="course.isEditing"
-                [(ngModel)]="course.courseFee"
-                class="form-control mb-2"
-                placeholder="courseFee" />
+            <p *ngIf="!course.isEditing">Subject: {{ course.subjects }}</p>
+            <input
+              *ngIf="course.isEditing"
+              [(ngModel)]="course.subjects"
+              class="form-control mb-2"
+              placeholder="Subject" />
           
-              <p *ngIf="!course.isEditing" class="card-text">{{ course.description }}</p>
-              <textarea
-                *ngIf="course.isEditing"
-                [(ngModel)]="course.description" 
-                class="form-control mb-2"
-                placeholder="Description"></textarea>
+            <p *ngIf="!course.isEditing">Course Fee: {{ course.courseFee }}</p>
+            <input
+              *ngIf="course.isEditing"
+              [(ngModel)]="course.courseFee"
+              class="form-control mb-2"
+              placeholder="courseFee" />
           
+            <p *ngIf="!course.isEditing" class="card-text">{{ course.description }}</p>
+            <textarea
+              *ngIf="course.isEditing"
+              [(ngModel)]="course.description" 
+              class="form-control mb-2"
+              placeholder="Description"></textarea>
+          
+            <div class="d-flex justify-content-between">
               <button
                 *ngIf="!course.isEditing"
                 class="btn btn-primary"
                 (click)="onPurchase(course)">
                 <i class="fa fa-shopping-cart"></i> Purchase
+              </button>
+          
+              <button
+                *ngIf="!course.isEditing"
+                class="btn btn-secondary"
+                (click)="downloadCoursePDF(course)">
+                <i class="fa fa-download"></i> Download
               </button>
           
               <button
@@ -129,6 +137,7 @@
                 Save Changes
               </button>
             </div>
+          </div>
           </div>
         </div>
         </div>
@@ -190,6 +199,19 @@
               name="description"
               class="form-control"
               placeholder="Enter Course Description"
+              required
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="courseDetails" class="form-label">Course Details</label>
+            <input
+              type="text"
+              id="courseDetails"
+              [(ngModel)]="selectedCourse.fulDetails"
+              name="fulDetails"
+              class="form-control"
+              placeholder="Enter Course Details"
               required
             />
           </div>
