@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../../guardAuth/auth.service';
 import { Faculty } from '../../../model/faculty.model';
 import { Lecturer } from '../../../model/lecturers.model';
 import { FacultyService } from '../../../service/faculty.service';
@@ -17,7 +15,6 @@ import { SidebarAdminComponent } from '../sidebar-admin/sidebar-admin.component'
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
     HeaderAdminComponent,
     SidebarAdminComponent,
     FooterComponent,
@@ -28,6 +25,7 @@ import { SidebarAdminComponent } from '../sidebar-admin/sidebar-admin.component'
 export class FacultyAdminComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
   @ViewChild('facultyTrack') facultyTrack!: ElementRef;
+  @ViewChild('fileInput2') fileInput2!: ElementRef<HTMLInputElement>;
 
   faculties: Faculty[] = [];
   filteredFaculties: Faculty[] = [];
@@ -53,9 +51,7 @@ export class FacultyAdminComponent implements OnInit {
 
   constructor(
     private facultyService: FacultyService,
-    private profileViewService: ProfileViewService,
-    private authService: AuthService,
-    private router: Router
+    private profileViewService: ProfileViewService
   ) {}
 
   ngOnInit(): void {
@@ -226,11 +222,6 @@ export class FacultyAdminComponent implements OnInit {
       });
     }
   }
-  
-  triggerFileInput2(): void {
-    document.querySelector<HTMLInputElement>('#fileInput')!.click();
-  }
-
   editLecturer(lecturer: Lecturer): void {
     this.selectedLecturer = { ...lecturer };
     this.imagePreview2 = lecturer.lecturerImageData ? 'data:image/jpeg;base64,' + lecturer.lecturerImageData : null;
@@ -247,12 +238,18 @@ export class FacultyAdminComponent implements OnInit {
     this.isLecturerEditMode = false;
   }
 
+  triggerFileInput2(): void {
+    this.fileInput2.nativeElement.click();
+  }
+
   onImageSelected2(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       this.imageFile = input.files[0];
       const reader = new FileReader();
-      reader.onload = (e) => (this.imagePreview = reader.result as string);
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.imagePreview2 = e.target?.result as string;
+      };
       reader.readAsDataURL(this.imageFile);
     }
   }

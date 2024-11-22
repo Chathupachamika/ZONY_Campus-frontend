@@ -52,37 +52,6 @@ export class AboutComponent implements OnInit {
       );
     }
   }
-  async downloadPDF(report: any) {
-    const doc = new jsPDF();
-    const pageWidth = doc.internal.pageSize.width;
-    const pageHeight = doc.internal.pageSize.height;
-    const centerText = (text: string, y: number) => {
-      const textWidth = doc.getTextWidth(text);
-      const x = (pageWidth - textWidth) / 2;
-      doc.text(text, x, y);
-    };
-    doc.setFontSize(16);
-    centerText(`ID: ${report.id}`, 20);            //============================================================= change id
-    doc.setFontSize(14);
-    centerText(`Title: ${report.title}`, 30);      //============================================================= change title
-    doc.setFontSize(12);
-    const descriptionLines = doc.splitTextToSize(`Description: ${report.description}`, pageWidth - 20);
-    doc.text(descriptionLines, pageWidth / 2, 40, { align: 'center', maxWidth: pageWidth - 20 });
-    const lastY = 40 + (descriptionLines.length * 5);
-    centerText(`Price: $${report.price}`, lastY + 10);      //===================================================== change price
-    try {
-      const imgData = await this.getBase64Image(report.image);     //============================================== change image
-      const imgWidth = 50;
-      const imgHeight = 50;
-      const imgX = (pageWidth - imgWidth) / 2;
-      const imgY = lastY + 20;
-      doc.addImage(imgData, 'JPEG', imgX, imgY, imgWidth, imgHeight);
-    } catch (error) {
-      console.error('Error loading image:', error);
-      centerText('Image not available', lastY + 20);     
-    }
-    doc.save(`product-details-${report.id}.pdf`);           //===================================================== change pdf name
-  }
 
   onLogout(): void {
     this.authService.logout();

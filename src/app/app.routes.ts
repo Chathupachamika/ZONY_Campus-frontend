@@ -6,10 +6,12 @@ import { FacultyAdminComponent } from './components/admin/faculty-admin/faculty-
 import { HeaderAdminComponent } from './components/admin/header-admin/header-admin.component';
 import { ProgramAdminComponent } from './components/admin/program-admin/program-admin.component';
 import { SidebarAdminComponent } from './components/admin/sidebar-admin/sidebar-admin.component';
+import { ZonarComponent } from './components/admin/zonar/zonar.component';
 import { LoginComponent } from './components/logIn&Reg/login/login.component';
 import { RegisterComponent } from './components/logIn&Reg/register/register.component';
 import { AboutComponent } from './components/user/about/about.component';
 import { BotComponent } from './components/user/bot/bot.component';
+import { CourseComponent } from './components/user/course/course.component';
 import { FacultyComponent } from './components/user/faculty/faculty.component';
 import { HomeComponent } from './components/user/home/home.component';
 import { ProgramComponent } from './components/user/program/program.component';
@@ -22,12 +24,14 @@ export const routes: Routes = [
   {path: 'admin/sidebar-admin', component: SidebarAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true } },
   {path:'admin/header-admin', component: HeaderAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true}},
   {path:'admin/course-admin', component: CourseAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true}},
+  {path:'admin/zonar', component: ZonarComponent, canActivate: [AuthGuard], data: { isAdminRoute: true}},
   {path:'admin/about-admin', component: AboutAdminComponent, canActivate: [AuthGuard], data: { isAdminRoute: true}},
 
   { path: 'login', component: LoginComponent }, 
   { path: 'register', component: RegisterComponent }, 
 
   {path: 'program', component: ProgramComponent, canActivate:[AuthGuard]},
+  {path: 'course', component: CourseComponent, canActivate:[AuthGuard]},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'zonar', component: BotComponent, canActivate: [AuthGuard] },

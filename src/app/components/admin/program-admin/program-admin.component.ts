@@ -10,15 +10,13 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import { Program } from '../../../model/program.model';
 import { ProgramService } from '../../../service/program.service';
 import { FooterComponent } from "../../user/footer/footer.component";
-import { ProgramComponent } from "../../user/program/program.component";
-import { SidebarComponent } from "../../user/sidebar/sidebar.component";
 import { HeaderAdminComponent } from "../header-admin/header-admin.component";
 import { SidebarAdminComponent } from "../sidebar-admin/sidebar-admin.component";
 
 @Component({
   selector: 'app-program-admin',
   standalone: true,
-  imports: [FooterComponent, SidebarComponent, FullCalendarModule, HeaderAdminComponent, ProgramComponent, CommonModule, FormsModule, RouterModule, SidebarAdminComponent],
+  imports: [FooterComponent, FullCalendarModule, HeaderAdminComponent, CommonModule, FormsModule, RouterModule, SidebarAdminComponent],
   templateUrl: './program-admin.component.html',
   styleUrls: ['./program-admin.component.css']
 })

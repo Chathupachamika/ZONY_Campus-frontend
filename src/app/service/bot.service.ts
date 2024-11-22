@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class BotService {
 
-  private apiURL = 'http://localhost:9090/bot/chat'; 
+  private apiURL = 'http://localhost:9090/api/chat/sendMessage'; 
 
   constructor(private http: HttpClient) {}
 
-  getBotResponse(prompt: string): Observable<string> {
-    return this.http.get<string>(`${this.apiURL}?prompt=${encodeURIComponent(prompt)}`);
+  getAIResponse(userMessage: string): Observable<{ responseMessage: string }> {
+    return this.http.post<{ responseMessage: string }>(this.apiURL, { message: userMessage });
   }
 }

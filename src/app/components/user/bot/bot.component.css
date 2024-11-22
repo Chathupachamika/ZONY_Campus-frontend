@@ -1,63 +1,82 @@
-.bot-container {
-    max-width: 600px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-  
-  .chat-box {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 15px;
-    height: 400px;
-    overflow-y: auto;
-    background-color: #f9f9f9;
-  }
-  
-  .chat-box div {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 80%;
-    word-wrap: break-word;
-  }
-  
-  .user-message {
-    background-color: #d1e7dd;
-    align-self: flex-end;
-    text-align: right;
-  }
-  
-  .bot-message {
-    background-color: #f8d7da;
-    align-self: flex-start;
-    text-align: left;
-  }
-  
-  .chat-input {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  textarea {
-    flex: 1;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: none;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+.custom-body {
+  background-color: #343a40;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-header {
+  color: white;
+  font-size: 2rem;
+}
+
+.custom-divider {
+  border: 1px solid white;
+}
+
+.custom-chatbox {
+  background-color: #212529;
+  padding: 1rem;
+  border-radius: 8px;
+  height: calc(100vh - 200px); 
+  overflow-y: auto;
+}
+
+.custom-footer {
+  background-color: #212529;
+}
+
+.custom-input {
+  background-color: #495057;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 25px;
+}
+
+.custom-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.custom-button {
+  background-color: #0d6efd;
+  border: none;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-button:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+img {
+  object-fit: cover;
+}
+
+.bot {
+  background-image: url('../../../../assets/img/bot.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.user {
+  background-image: url('../../../../assets/img/user.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

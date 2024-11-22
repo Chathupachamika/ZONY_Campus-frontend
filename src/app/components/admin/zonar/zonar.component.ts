@@ -3,17 +3,16 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BotService } from '../../../service/bot.service';
-import { HeaderComponent } from "../header/header.component";
-import { SidebarComponent } from "../sidebar/sidebar.component";
+import { SidebarAdminComponent } from "../sidebar-admin/sidebar-admin.component";
 
 @Component({
-  selector: 'app-bot',
+  selector: 'app-zonar',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, HeaderComponent, SidebarComponent],
-  templateUrl: './bot.component.html',
-  styleUrl: './bot.component.css'
+  imports: [CommonModule, FormsModule, RouterModule, SidebarAdminComponent],
+  templateUrl: './zonar.component.html',
+  styleUrl: './zonar.component.css'
 })
-export class BotComponent {
+export class ZonarComponent {
   chatsArray: { sender: string; message: string; time: string }[] = [];
   messageInput: string = '';
   isTyping: boolean = false;
