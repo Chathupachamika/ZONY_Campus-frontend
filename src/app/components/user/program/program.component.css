@@ -114,12 +114,24 @@
     color: #333;
     margin-bottom: 15px;
   }
-  .h1eka{
+  .h1eka {
     margin-left: 100px;
-    color: #eee9e9;
+    color: #3e61d3;
     font-size: 4.2em;
     margin-top: 260px;
+    text-shadow: 0 0 10px #3e61d3, 0 0 20px #3e61d3, 0 0 30px #3e61d3, 0 0 40px #3e61d3, 0 0 50px #3e61d3, 0 0 60px #3e61d3;
+    animation: neonFlicker 2s infinite alternate;
   }
+  
+  @keyframes neonFlicker {
+    0%, 100% {
+      text-shadow: 0 0 10px #3e61d3, 0 0 20px #3e61d3, 0 0 30px #3e61d3, 0 0 40px #3e61d3, 0 0 50px #3e61d3, 0 0 60px #3e61d3;
+    }
+    50% {
+      text-shadow: 0 0 5px #2a3f9e, 0 0 15px #2a3f9e, 0 0 25px #2a3f9e, 0 0 35px #2a3f9e, 0 0 45px #2a3f9e, 0 0 55px #2a3f9e;
+    }
+  }
+  
   
   .full-calendar {
     border-radius: 5px;

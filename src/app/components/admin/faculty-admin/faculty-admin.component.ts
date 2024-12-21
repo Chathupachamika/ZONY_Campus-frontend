@@ -208,24 +208,45 @@ export class FacultyAdminComponent implements OnInit {
   }
 
   saveLecturer(): void {
-    const fileToUpload = this.imageFile2 || undefined; 
+    const fileToUpload = this.imageFile2 || undefined;
   
     if (this.isLecturerEditMode) {
-      this.facultyService.updateLecturer(this.selectedLecturer, fileToUpload).subscribe(() => {
-        this.loadLecturers();
-        this.clearForm();
-      });
+      this.facultyService.updateLecturer(this.selectedLecturer, fileToUpload).subscribe(
+        () => {
+          alert('Lecturer updated successfully');
+          this.loadLecturers();
+          this.clearForm2();
+          this.isLecturerEditMode = false;
+        },
+        (error) => {
+          console.error('Error updating lecturer:', error);
+          alert('Error updating lecturer');
+        }
+      );
     } else {
-      this.facultyService.addLecturer(this.selectedLecturer, fileToUpload!).subscribe(() => {
-        this.loadLecturers();
-        this.clearForm();
-      });
+      if (!fileToUpload) {
+        alert('Please select an image');
+        return;
+      }
+      this.facultyService.addLecturer(this.selectedLecturer, fileToUpload).subscribe(
+        () => {
+          alert('Lecturer added successfully');
+          this.loadLecturers();
+          this.clearForm2();
+        },
+        (error) => {
+          console.error('Error adding lecturer:', error);
+          alert('Error adding lecturer');
+        }
+      );
     }
   }
   editLecturer(lecturer: Lecturer): void {
     this.selectedLecturer = { ...lecturer };
-    this.imagePreview2 = lecturer.lecturerImageData ? 'data:image/jpeg;base64,' + lecturer.lecturerImageData : null;
+    this.imagePreview2 = lecturer.lecturerImageData ? 
+      'data:image/jpeg;base64,' + lecturer.lecturerImageData : null;
     this.isLecturerEditMode = true;
+    this.imageFile2 = null; // Reset the image file when editing
   }
 
   deleteLecturer(id: number): void {
@@ -245,12 +266,12 @@ export class FacultyAdminComponent implements OnInit {
   onImageSelected2(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
-      this.imageFile = input.files[0];
+      this.imageFile2 = input.files[0];  // Changed from imageFile to imageFile2
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         this.imagePreview2 = e.target?.result as string;
       };
-      reader.readAsDataURL(this.imageFile);
+      reader.readAsDataURL(this.imageFile2);  // Changed to imageFile2
     }
   }
 
@@ -265,4 +286,5 @@ export class FacultyAdminComponent implements OnInit {
       reader.readAsDataURL(this.imageFile);
     }
   }
+  
 }

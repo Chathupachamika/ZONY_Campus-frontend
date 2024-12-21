@@ -37,6 +37,7 @@
     "bootstrap-icons": "^1.11.3",
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.4.1",
+    "icons": "^1.0.0",
     "jspdf": "^2.5.2",
     "nodemailer": "^6.9.16",
     "openai": "^4.72.0",
