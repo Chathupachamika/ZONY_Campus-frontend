@@ -32,7 +32,7 @@ export class FacultyAdminComponent implements OnInit {
   filteredFaculties: Faculty[] = [];
   facultyLecturers: { [key: string]: Lecturer[] } = {};
   userDetails: any;
-  searchTerm: string = ''; 
+  searchTerm: string = '';
   selectedIndex = 0;
   displayedLecturers: Lecturer[] = [];
   facultiesCount = 0;
@@ -56,20 +56,20 @@ export class FacultyAdminComponent implements OnInit {
   constructor(
     private facultyService: FacultyService,
     private profileViewService: ProfileViewService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.facultyService.getFaculties().subscribe((data) => {
-      this.faculties = data; 
+      this.faculties = data;
       this.filteredFaculties = [...this.faculties];
       this.facultiesCount = this.faculties.length;
-      this.selectedIndex = Math.floor(this.facultiesCount / 2); 
+      this.selectedIndex = Math.floor(this.facultiesCount / 2);
       this.scrollToMiddleCard();
 
-      
+
       this.faculties.forEach((faculty) => {
         this.facultyService.searchLecturersByFaculty(faculty.name).subscribe((lecturers) => {
-          this.facultyLecturers[faculty.name] = lecturers; 
+          this.facultyLecturers[faculty.name] = lecturers;
           console.log('Lecturers for faculty:', faculty.name, this.facultyLecturers);
         });
       });
@@ -115,8 +115,8 @@ export class FacultyAdminComponent implements OnInit {
       this.lecturers = [];
     }
   }
-  
-  
+
+
   loadFaculties(): void {
     this.facultyService.getFaculties().subscribe((data) => {
       this.faculties = data;
@@ -195,12 +195,12 @@ export class FacultyAdminComponent implements OnInit {
   }
 
   showAllLecturers(): void {
-    this.displayedLecturers = [...this.allLecturers]; 
+    this.displayedLecturers = [...this.allLecturers];
   }
   loadLecturers(): void {
     this.facultyService.getLecturers().subscribe((data) => {
       this.allLecturers = data;
-      this.displayedLecturers = this.allLecturers.slice(0, 5); 
+      this.displayedLecturers = this.allLecturers.slice(0, 5);
     });
   }
 
@@ -213,7 +213,7 @@ export class FacultyAdminComponent implements OnInit {
 
   saveLecturer(): void {
     const fileToUpload = this.imageFile2 || undefined;
-  
+
     if (this.isLecturerEditMode) {
       this.facultyService.updateLecturer(this.selectedLecturer, fileToUpload).subscribe(
         () => {
@@ -247,10 +247,10 @@ export class FacultyAdminComponent implements OnInit {
   }
   editLecturer(lecturer: Lecturer): void {
     this.selectedLecturer = { ...lecturer };
-    this.imagePreview2 = lecturer.lecturerImageData ? 
+    this.imagePreview2 = lecturer.lecturerImageData ?
       'data:image/jpeg;base64,' + lecturer.lecturerImageData : null;
     this.isLecturerEditMode = true;
-    this.imageFile2 = null; // Reset the image file when editing
+    this.imageFile2 = null;
   }
   deleteLecturer(id: number): void {
     this.facultyService.deleteLecturerById(id).subscribe(() => this.loadLecturers());
@@ -269,12 +269,12 @@ export class FacultyAdminComponent implements OnInit {
   onImageSelected3(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
-      this.imageFile3 = input.files[0];  // Changed from imageFile to imageFile2
+      this.imageFile3 = input.files[0];
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         this.imagePreview3 = e.target?.result as string;
       };
-      reader.readAsDataURL(this.imageFile3);  // Changed to imageFile2
+      reader.readAsDataURL(this.imageFile3);
     }
   }
   triggerFileInput2(): void {
@@ -284,18 +284,18 @@ export class FacultyAdminComponent implements OnInit {
   onImageSelected2(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
-      this.imageFile2 = input.files[0];  // Changed from imageFile to imageFile2
+      this.imageFile2 = input.files[0];
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         this.imagePreview2 = e.target?.result as string;
       };
-      reader.readAsDataURL(this.imageFile2);  // Changed to imageFile2
+      reader.readAsDataURL(this.imageFile2);
     }
   }
 
   savelecImage(): void {
     const fileToUpload = this.imageFile3 || undefined;
-  
+
     if (this.isLecturerEditMode) {
       this.facultyService.updateLecturer(this.selectedLecturer, fileToUpload).subscribe(
         () => {
@@ -327,16 +327,16 @@ export class FacultyAdminComponent implements OnInit {
       );
     }
   }
-  
+
   editLecturerImage(lecturer: Lecturer): void {
     this.selectedLecturerImage = { ...lecturer };
-    this.imagePreview3 = lecturer.lecturerImageData ? 
+    this.imagePreview3 = lecturer.lecturerImageData ?
       'data:image/jpeg;base64,' + lecturer.lecturerImageData : null;
     this.isLecturerEditMode = true;
     this.imageFile3 = null;
   }
-  
-  
+
+
   onImageSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
@@ -348,5 +348,5 @@ export class FacultyAdminComponent implements OnInit {
       reader.readAsDataURL(this.imageFile);
     }
   }
-  
+
 }
