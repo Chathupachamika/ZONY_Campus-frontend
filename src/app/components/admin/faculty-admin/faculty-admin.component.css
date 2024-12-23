@@ -406,3 +406,114 @@
     cursor: pointer;
   }
   
+.modal {
+  display: block; 
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s ease;
+}
+
+.modal-dialog {
+  transform: translate(0, 10%); 
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  background-color: #343a40;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  animation: neonGlow 1.5s infinite alternate;
+}
+
+@keyframes neonGlow {
+  0% {
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff;
+  }
+  50% {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00;
+  }
+  100% {
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff;
+  }
+}
+
+.modal-body img {
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: imageGlow 1.5s infinite alternate;
+}
+
+@keyframes imageGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 0, 255, 0.6), 0 0 10px rgba(255, 0, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6), 0 0 30px rgba(0, 255, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 0, 255, 0.6), 0 0 10px rgba(255, 0, 255, 0.6);
+  }
+}
+
+.modal-footer .btn {
+  transition: all 0.3s ease;
+}
+
+.modal-footer .btn-primary {
+  background-color: #1d73d1;
+  border: none;
+  animation: neonPulse 1.5s infinite alternate;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #6c757d;
+  border: none;
+  animation: neonPulse 1.5s infinite alternate;
+}
+
+@keyframes neonPulse {
+  0% {
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    transform: scale(1.05);
+  }
+  50% {
+    box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+    transform: scale(1.1);
+  }
+  100% {
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    transform: scale(1.05);
+  }
+}
+
+.modal-header .close {
+  color: #fff;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.modal-header .close:hover {
+  opacity: 1;
+  animation: glowClose 1.5s infinite alternate;
+}
+
+@keyframes glowClose {
+  0% {
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+  }
+  50% {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+  }
+  100% {
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+  }
+}
