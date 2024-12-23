@@ -301,10 +301,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Save Lecturer Image?</h5>
-                    <button type="button" class="close" (click)="imagePreview3 = null" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title">Do You Want To Save Lecturer Image ?</h5>
                   </div>
                   <div class="modal-body text-center">
                     <img [src]="imagePreview3" alt="Lecturer Image Preview" class="rounded-circle border border-light"
@@ -312,7 +309,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" (click)="imagePreview3 = null">Cancel</button>
-                    <button type="button" class="btn btn-primary" (click)="savelecImage()">Save Image</button>
+                    <button type="button" class="btn btn-primary" style="margin-left: 270px;" (click)="savelecImage()">Save Image</button>
                   </div>
 
                 </div>

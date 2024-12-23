@@ -1,84 +1,51 @@
-
 <div class="chat">
   <div class="custom-body bg-dark">
     <div class="container-fluid p-0">
       <header class="text-center py-4">
-        <h1 class="custom-header">Use for Zonar to get help..</h1>
+        <h1 class="custom-header">Chat with Zonar - Your Virtual Assistant</h1>
         <hr class="custom-divider" />
       </header>
       <div class="row justify-content-center mt-0 px-4 px-md-0">
         <div class="col-12 col-md-10 col-lg-8">
-          <div
-            class="custom-chatbox overflow-auto"
-            style="max-height: 70vh; margin-top: 0;"
-          >
+          <div class="custom-chatbox overflow-auto" style="max-height: 70vh; margin-top: 0;">
             <ng-container *ngFor="let chat of chatsArray">
-              <div 
-                class="d-flex"
-                [ngClass]="{
+              <div class="d-flex" [ngClass]="{
                   'justify-content-end': chat.sender === 'Me',
                   'justify-content-start': chat.sender !== 'Me'
-                }"
-              >
-                <img
-                  *ngIf="chat.sender !== 'Me'"
-                  class="rounded-circle me-2 bot"
-                  width="45"
-                  height="45"
-                />
-                <img
-                  *ngIf="chat.sender === 'Me'"
-                  class="rounded-circle me-2 user"
-                  width="45"
-                  height="45"
-                />
-                <div
-                  class="p-3 rounded-3"
-                  [ngClass]="{
-                    'bg-secondary text-white': chat.sender === 'Me',
-                    'bg-white text-dark': chat.sender !== 'Me'
-                  }"
-                  style="max-width: 75%;"
-                >
-                  <div class="fw-bold">{{ chat.sender }}</div>
-                  <p class="mb-5">{{ chat.message }}</p>
-                  <small class="text-muted">{{ chat.time }}</small>
+                }">
+                <img *ngIf="chat.sender !== 'Me'" class="profile-img me-2 bot" />
+                <img *ngIf="chat.sender === 'Me'" class="profile-img me-2" [src]="'data:image/jpeg;base64,' + userDetails.imageData"/>
+                <div class="chat-message" [ngClass]="{
+                    'user-message': chat.sender === 'Me',
+                    'bot-message': chat.sender !== 'Me'
+                  }">
+                  <div class="sender-name">{{ chat.sender }}</div>
+                  <p class="message-text">{{ chat.message }}</p>
+                  <small class="timestamp">{{ chat.time }}</small>
                 </div>
               </div>
             </ng-container>
-  
-            <div
-              *ngIf="isTyping"
-              class="d-flex align-items-start w-300 my-2"
-            >
-              <img
-                class="rounded-circle me-2 bot"
-                width="40"
-                height="40"
-              />
-              <div class="bg-white text-dark p-3 rounded-3" style="max-width: 75%;">
-                <div class="fw-bold">Mr.ZONAR</div>
-                <p class="mb-1"><em>Typing...</em></p>
+
+            <div *ngIf="isTyping" class="typing-indicator">
+              <div class="profile-img bot"></div>
+              <div class="typing-bubble">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
       <footer class="custom-footer bg-dark py-3 position-fixed bottom-0 w-100">
-        <div class="container mb-5">
+        <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8">
               <div class="d-flex align-items-center">
-                <input
-                  type="text"
-                  class="custom-input flex-grow-1 me-2"
-                  [(ngModel)]="messageInput"
-                  (keydown.enter)="send()"
-                  placeholder="Message Mr.ZONAR"
-                />
+                <input type="text" class="custom-input flex-grow-1 me-2" [(ngModel)]="messageInput"
+                  (keydown.enter)="send()" placeholder="Type a message..." />
                 <button class="custom-button" (click)="send()">
-                  <i class="bi bi-arrow-up"></i>
+                  <i class="bi bi-send-fill"></i>
                 </button>
               </div>
             </div>
@@ -88,3 +55,4 @@
     </div>
   </div>
 </div>
+<app-sidebar></app-sidebar>

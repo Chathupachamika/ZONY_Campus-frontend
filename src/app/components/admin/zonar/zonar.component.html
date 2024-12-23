@@ -7,42 +7,25 @@
       </header>
       <div class="row justify-content-center mt-0 px-4 px-md-0">
         <div class="col-12 col-md-10 col-lg-8">
-          <div
-            class="custom-chatbox overflow-auto"
-            style="max-height: 70vh; margin-top: 0;"
-          >
+          <div class="custom-chatbox overflow-auto" style="max-height: 70vh; margin-top: 0;">
             <ng-container *ngFor="let chat of chatsArray">
-              <div 
-                class="d-flex"
-                [ngClass]="{
+              <div class="d-flex" [ngClass]="{
                   'justify-content-end': chat.sender === 'Me',
                   'justify-content-start': chat.sender !== 'Me'
-                }"
-              >
-                <img
-                  *ngIf="chat.sender !== 'Me'"
-                  class="profile-img me-2 bot"
-                
-                />
-                <img
-                  *ngIf="chat.sender === 'Me'"
-                  class="profile-img me-2 user"
-                 
-                />
-                <div
-                  class="chat-message"
-                  [ngClass]="{
+                }">
+                <img *ngIf="chat.sender !== 'Me'" class="profile-img me-2 bot" />
+                <img *ngIf="chat.sender === 'Me'" class="rounded-circle border border-light profile-img me-2" [src]="'data:image/jpeg;base64,' + userDetails.imageData" width="40" height="40"/>
+                <div class="chat-message" [ngClass]="{
                     'user-message': chat.sender === 'Me',
                     'bot-message': chat.sender !== 'Me'
-                  }"
-                >
+                  }">
                   <div class="sender-name">{{ chat.sender }}</div>
                   <p class="message-text">{{ chat.message }}</p>
                   <small class="timestamp">{{ chat.time }}</small>
                 </div>
               </div>
             </ng-container>
-            
+
             <div *ngIf="isTyping" class="typing-indicator">
               <div class="profile-img bot"></div>
               <div class="typing-bubble">
@@ -59,13 +42,8 @@
           <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8">
               <div class="d-flex align-items-center">
-                <input
-                  type="text"
-                  class="custom-input flex-grow-1 me-2"
-                  [(ngModel)]="messageInput"
-                  (keydown.enter)="send()"
-                  placeholder="Type a message..."
-                />
+                <input type="text" class="custom-input flex-grow-1 me-2" [(ngModel)]="messageInput"
+                  (keydown.enter)="send()" placeholder="Type a message..." />
                 <button class="custom-button" (click)="send()">
                   <i class="bi bi-send-fill"></i>
                 </button>
@@ -77,3 +55,4 @@
     </div>
   </div>
 </div>
+<app-sidebar-admin></app-sidebar-admin>
