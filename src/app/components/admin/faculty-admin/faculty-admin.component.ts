@@ -26,6 +26,7 @@ export class FacultyAdminComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
   @ViewChild('facultyTrack') facultyTrack!: ElementRef;
   @ViewChild('fileInput2') fileInput2!: ElementRef<HTMLInputElement>;
+  @ViewChild('fileInput3') fileInput3!: ElementRef<HTMLInputElement>;
 
   faculties: Faculty[] = [];
   filteredFaculties: Faculty[] = [];
@@ -38,13 +39,16 @@ export class FacultyAdminComponent implements OnInit {
   lecturers: Lecturer[] = [];
   selectedFaculty: Faculty = this.initializeFaculty();
   selectedLecturer: Lecturer = new Lecturer('', '', '');
+  selectedLecturerImage: Lecturer = new Lecturer('', '', '');
   isEditMode: boolean = false;
   isLecturerEditMode = false;
   allLecturers: Lecturer[] = [];
   imagePreview2: string | null = null;
+  imagePreview3: string | null = null;
   imagePreview: string | null = null
   imageFile: File | null = null;
   imageFile2: File | null = null;
+  imageFile3: File | null = null;
   filterName = '';
   filterFaculty = '';
   filterDate = '';
@@ -248,7 +252,6 @@ export class FacultyAdminComponent implements OnInit {
     this.isLecturerEditMode = true;
     this.imageFile2 = null; // Reset the image file when editing
   }
-
   deleteLecturer(id: number): void {
     this.facultyService.deleteLecturerById(id).subscribe(() => this.loadLecturers());
   }
@@ -259,6 +262,21 @@ export class FacultyAdminComponent implements OnInit {
     this.isLecturerEditMode = false;
   }
 
+  triggerFileInput3(): void {
+    this.fileInput3.nativeElement.click();
+  }
+
+  onImageSelected3(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      this.imageFile3 = input.files[0];  // Changed from imageFile to imageFile2
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.imagePreview3 = e.target?.result as string;
+      };
+      reader.readAsDataURL(this.imageFile3);  // Changed to imageFile2
+    }
+  }
   triggerFileInput2(): void {
     this.fileInput2.nativeElement.click();
   }
@@ -275,6 +293,50 @@ export class FacultyAdminComponent implements OnInit {
     }
   }
 
+  savelecImage(): void {
+    const fileToUpload = this.imageFile3 || undefined;
+  
+    if (this.isLecturerEditMode) {
+      this.facultyService.updateLecturer(this.selectedLecturer, fileToUpload).subscribe(
+        () => {
+          alert('Lecturer updated successfully');
+          this.loadLecturers();
+          this.clearForm2();
+          this.isLecturerEditMode = false;
+        },
+        (error) => {
+          console.error('Error updating lecturer:', error);
+          alert('Error updating lecturer');
+        }
+      );
+    } else {
+      if (!fileToUpload) {
+        alert('Please select an image');
+        return;
+      }
+      this.facultyService.addLecturer(this.selectedLecturer, fileToUpload).subscribe(
+        () => {
+          alert('Lecturer added successfully');
+          this.loadLecturers();
+          this.clearForm2();
+        },
+        (error) => {
+          console.error('Error adding lecturer:', error);
+          alert('Error adding lecturer');
+        }
+      );
+    }
+  }
+  
+  editLecturerImage(lecturer: Lecturer): void {
+    this.selectedLecturerImage = { ...lecturer };
+    this.imagePreview3 = lecturer.lecturerImageData ? 
+      'data:image/jpeg;base64,' + lecturer.lecturerImageData : null;
+    this.isLecturerEditMode = true;
+    this.imageFile3 = null;
+  }
+  
+  
   onImageSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {

@@ -73,6 +73,16 @@ export class FacultyService {
 
     return this.http.put(`${this.lecturerUrl}/update-lecturer`, formData);
   }
+  updateLectureImage(lecturer: Lecturer, imageFile?: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('lecturer', new Blob([JSON.stringify(lecturer)], { type: 'application/json' }));
+    if (imageFile) {
+      formData.append('imageFile', imageFile);
+    }
+  
+    return this.http.put(`${this.lecturerUrl}/update-lecturer`, formData);
+  }
+  
 
   getLecturerById(id: number): Observable<Lecturer> {
     return this.http.get<Lecturer>(`${this.lecturerUrl}/searchLecturer-by-id/${id}`);

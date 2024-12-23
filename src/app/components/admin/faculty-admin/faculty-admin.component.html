@@ -358,30 +358,93 @@
                     </p><br>
                     <h1>Lecturers in Faculty</h1><br>
                     <div class="row">
-                        <div
-                            *ngFor="let lecturer of facultyLecturers[faculty.name]"
-                            class="col-12 col-sm-6 col-md-4 mb-3">
-                            <div class="lecturer-card">
-                                <div style="width: 150px; height: 150px;">
-                                    <img
-                                        *ngIf="lecturer.lecturerImageData"
-                                        [src]="'data:image/jpeg;base64,' + lecturer.lecturerImageData"
-                                        alt="{{ lecturer.lecturerName }}"
-                                        class="rounded-circle border border-light"
-                                        style="object-fit: cover; width: 100%; height: 100%;" />
-                                </div>
-
-                                <h6>{{ lecturer.lecturerName }}</h6>
-                                <p class="description2">{{
-                                    lecturer.lecturerDegrees }}</p>
-                                <p>{{ lecturer.lecturerExperience }}</p>
-                                <p>{{ lecturer.facultyId }}</p>
-                                <p
-                                    class="specializations2"><strong>Specializations:</strong>
-                                    {{ lecturer.lecturer_id }}</p>
+                      <div
+                        *ngFor="let lecturer of facultyLecturers[faculty.name]"
+                        class="col-12 col-sm-6 col-md-4 mb-3"
+                      >
+                        <div class="lecturer-card">
+                          <div style="position: relative; width: 150px; height: 150px;">
+                            <!-- Lecturer Image -->
+                            <img
+                              *ngIf="lecturer.lecturerImageData"
+                              [src]="'data:image/jpeg;base64,' + lecturer.lecturerImageData"
+                              alt="{{ lecturer.lecturerName }}"
+                              class="rounded-circle border border-light"
+                              style="object-fit: cover; width: 100%; height: 100%;"
+                            />
+                    
+                            <!-- Camera Icon Overlay -->
+                            <div
+                              class="camera-icon-overlay"
+                              (click)="triggerFileInput3()"
+                              style="position: absolute; bottom: 10px; right: 10px; cursor: pointer; background-color: rgba(0, 0, 0, 0.5); border-radius: 50%; padding: 5px;"
+                            >
+                              <i class="bi bi-camera text-white"  (click)="editLecturer(lecturer)"></i>
                             </div>
+                    
+                            <!-- Hidden File Input -->
+                            <input
+                              type="file"
+                              accept="image/*"
+                              (change)="onImageSelected3($event)"
+                              #fileInput3
+                              style="display: none;"
+                            />
+                          </div>
+                    
+                          <!-- Lecturer Details -->
+                          <h6>{{ lecturer.lecturerName }}</h6>
+                          <p class="description2">{{ lecturer.lecturerDegrees }}</p>
+                          <p>{{ lecturer.lecturerExperience }}</p>
+                          <p>{{ lecturer.facultyId }}</p>
+                          <p class="specializations2">
+                            <strong>Specializations:</strong>
+                            {{ lecturer.lecturer_id }}
+                          </p>
                         </div>
+                      </div>
+                    
+                      <!-- Image Preview Popup -->
+                      <div
+                        *ngIf="imagePreview3"
+                        class="modal"
+                        tabindex="-1"
+                        role="dialog"
+                        style="display: block; background-color: rgba(0, 0, 0, 0.5);"
+                      >
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Save Lecturer Image?</h5>
+                              <button
+                                type="button"
+                                class="close"
+                                (click)="imagePreview3 = null"
+                                aria-label="Close"
+                              >
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body text-center">
+                              <!-- Image Preview -->
+                              <img
+                                [src]="imagePreview3"
+                                alt="Lecturer Image Preview"
+                                class="rounded-circle border border-light"
+                                style="object-fit: cover; width: 150px; height: 150px;"
+                              />
+                            </div>
+                            <div class="modal-footer">
+                              <!-- Cancel and Save Buttons -->
+                              <button type="button" class="btn btn-secondary" (click)="imagePreview3 = null">Cancel</button>
+                              <button type="button" class="btn btn-primary" (click)="savelecImage()">Save Image</button>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    
 
                 </div>
             </div>
