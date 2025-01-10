@@ -3,74 +3,82 @@
     <div class="card shadow-lg">
       <div class="card-body p-5">
         <p class="h1eka">Register Online</p>
-        
-          <div class="row mb-4">
-            <div class="col-md-4">
-              <label class="form-label">Study Programme/Exam *</label>
-              <select [(ngModel)]="user.program" name="program" class="form-select" required>
-                <option value="">Select Programme</option>
-                <option value="program1">Program 1</option>
-                <option value="program2">Program 2</option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Title *</label>
-              <select [(ngModel)]="user.title" name="title" class="form-select" required>
-                <option value="">Select Title</option>
-                <option value="mr">Mr</option>
-                <option value="ms">Ms</option>
-                <option value="dr">Dr</option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Referral *</label>
-              <input [(ngModel)]="user.referral" name="referral" type="text" class="form-control" placeholder="How did you find us?" required>
-            </div>
-          </div>
 
-         
-          <div class="row mb-4">
-            <div class="col-md-6">
-              <label class="form-label">Good Name / Short Name *</label>
-              <input [(ngModel)]="user.shortName" name="shortName" type="text" class="form-control" placeholder="Enter your preferred name" required>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Full Name *</label>
-              <input [(ngModel)]="user.fullName" name="fullName" type="text" class="form-control" placeholder="Enter your full name" required>
-            </div>
+        <div class="row mb-4">
+          <div class="col-md-4">
+            <label class="form-label">Study Programme/Exam *</label>
+            <select [(ngModel)]="user.program" name="program" class="form-select" required>
+              <option value="">Select Programme</option>
+              <option value="program1">Program 1</option>
+              <option value="program2">Program 2</option>
+            </select>
           </div>
+          <div class="col-md-4">
+            <label class="form-label">Title *</label>
+            <select [(ngModel)]="user.title" name="title" class="form-select" required>
+              <option value="">Select Title</option>
+              <option value="mr">Mr</option>
+              <option value="ms">Ms</option>
+              <option value="dr">Dr</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Referral *</label>
+            <input [(ngModel)]="user.referral" name="referral" type="text" class="form-control"
+              placeholder="How did you find us?" required>
+          </div>
+        </div>
 
-          <div class="row mb-4">
-            <div class="col-md-4">
-              <label class="form-label">Date of Birth *</label>
-              <input [(ngModel)]="user.dob" name="dob" type="date" class="form-control" required>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Country *</label>
-              <input [(ngModel)]="user.country" name="country" type="text" class="form-control" placeholder="Enter your country" required>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Passport / NIC *</label>
-              <input [(ngModel)]="user.passport" name="passport" type="text" class="form-control" placeholder="NIC/Passport number" required>
-            </div>
-          </div>
 
-          <div class="row mb-4">
-            <div class="col-md-6">
-              <label class="form-label">Mobile Phone *</label>
-              <input [(ngModel)]="user.mobile" name="mobile" type="tel" class="form-control" placeholder="Enter your mobile number" required>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Email Address *</label>
-              <input [(ngModel)]="user.email" name="email" type="email" class="form-control" placeholder="Enter your email" required>
-            </div>
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label class="form-label">Good Name / Short Name *</label>
+            <input [(ngModel)]="user.shortName" name="shortName" type="text" class="form-control"
+              placeholder="Enter your preferred name" required>
           </div>
+          <div class="col-md-6">
+            <label class="form-label">Full Name *</label>
+            <input [(ngModel)]="user.fullName" name="fullName" type="text" class="form-control"
+              placeholder="Enter your full name" required>
+          </div>
+        </div>
 
-          <div class="mb-4">
-            <label class="form-label">Home Address *</label>
-            <textarea [(ngModel)]="user.address" name="address" class="form-control" rows="2" placeholder="Enter your home address" required></textarea>
+        <div class="row mb-4">
+          <div class="col-md-4">
+            <label class="form-label">Date of Birth *</label>
+            <input [(ngModel)]="user.dob" name="dob" type="date" class="form-control" required>
           </div>
-          <div class="row mb-4">
+          <div class="col-md-4">
+            <label class="form-label">Country *</label>
+            <input [(ngModel)]="user.country" name="country" type="text" class="form-control"
+              placeholder="Enter your country" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Passport / NIC *</label>
+            <input [(ngModel)]="user.passport" name="passport" type="text" class="form-control"
+              placeholder="NIC/Passport number" required>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label class="form-label">Mobile Phone *</label>
+            <input [(ngModel)]="user.mobile" name="mobile" type="tel" class="form-control"
+              placeholder="Enter your mobile number" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email Address *</label>
+            <input [(ngModel)]="user.email" name="email" type="email" class="form-control"
+              placeholder="Enter your email" required>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Home Address *</label>
+          <textarea [(ngModel)]="user.address" name="address" class="form-control" rows="2"
+            placeholder="Enter your home address" required></textarea>
+        </div>
+        <div class="row mb-4">
           <div class="col-md-3"></div>
           <label class="form-label">Faculty *</label>
           <select [(ngModel)]="faculties" name="faculty" class="form-select" required>
@@ -79,34 +87,41 @@
           </select><br>
         </div>
 
-          <div class="row mb-4">
-            <div class="col-md-6">
-              <label class="form-label">User Name *</label>
-              <input [(ngModel)]="user.username" name="username" type="text" class="form-control" placeholder="Enter your User Name" required>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Password *</label>
-              <input [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="Enter your Password" required>
-            </div>
-        
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label class="form-label">User Name *</label>
+            <input [(ngModel)]="user.username" name="username" type="text" class="form-control"
+              placeholder="Enter your User Name" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Password *</label>
+            <input [(ngModel)]="user.password" name="password" type="password" class="form-control"
+              placeholder="Enter your Password" required>
+          </div>
+
           <div class="row mb-4">
             <div class="col-md-4 mt-3">
               <label class="form-label">Confirm Password *</label>
-              <input [(ngModel)]="confirmPassword" name="confirmPassword" type="password" class="form-control" placeholder="Confirm your Password" required>
+              <input [(ngModel)]="confirmPassword" name="confirmPassword" type="password" class="form-control"
+                placeholder="Confirm your Password" required>
             </div>
           </div>
 
           <div *ngIf="showAlert" class="col-md-12 mt-3">
-            <div *ngIf="user.password && confirmPassword && user.password !== confirmPassword" class="alert alert-danger">
+            <div *ngIf="user.password && confirmPassword && user.password !== confirmPassword"
+              class="alert alert-danger">
               Error: Passwords do not match.
             </div>
           </div>
 
           <div class="mb-4 text-center">
             <label class="form-label">Profile Image *</label>
-            <input type="file" style="width: 400px;" class="form-control mt-2" (change)="onFileSelected($event)" accept="image/jpeg, image/jpg">
-            <div class="profile-image-container" [ngStyle]="{ 'background-image': profileImageSrc ? 'url(' + profileImageSrc + ')' : 'none' }">
-              <img [src]="profileImageSrc" class="profile-image-preview rounded-circle" *ngIf="profileImageSrc; else placeholder" />
+            <input type="file" style="width: 400px;" class="form-control mt-2" (change)="onFileSelected($event)"
+              accept="image/jpeg, image/jpg">
+            <div class="profile-image-container"
+              [ngStyle]="{ 'background-image': profileImageSrc ? 'url(' + profileImageSrc + ')' : 'none' }">
+              <img [src]="profileImageSrc" class="profile-image-preview rounded-circle"
+                *ngIf="profileImageSrc; else placeholder" />
               <ng-template #placeholder>
                 <div class="profile-image-placeholder rounded-circle"></div>
               </ng-template>
@@ -118,7 +133,7 @@
             <button type="submit" class="submit" (click)="onSubmit()">Register Now</button>
             <button type="button" class="close" (click)="backToLogin()">Back To Log In</button>
           </div>
+        </div>
       </div>
     </div>
   </div>
-</div>

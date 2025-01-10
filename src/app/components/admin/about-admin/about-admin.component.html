@@ -1,17 +1,22 @@
 <div class="wrapper">
-<app-header-admin></app-header-admin>
-    <div class="container">
-    <main class="main-content" style="margin-top: 250px; background-color: rgba(68, 132, 189, 0.329); padding-top: 5px; padding-bottom: 5px; border-radius: 20px; padding-left: 10px; padding-right: 10px;">
-    
+  <app-header-admin></app-header-admin>
+  <div class="container">
+    <main class="main-content"
+      style="margin-top: 250px; background-color: rgba(68, 132, 189, 0.329); padding-top: 5px; padding-bottom: 5px; border-radius: 20px; padding-left: 10px; padding-right: 10px;">
+
       <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner" style="border-radius: 20px;">
           <div class="carousel-item active">
-            <svg class="bd-placeholder" width="100%" height="650px" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+            <svg class="bd-placeholder" width="100%" height="650px" aria-hidden="true"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
+              <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+            </svg>
             <div class="container">
               <div class="carousel-caption text-start">
                 <h1>ZONY headline.</h1>
@@ -20,7 +25,10 @@
             </div>
           </div>
           <div class="carousel-item">
-            <svg class="bd-placeholder1" width="100%" height="650px" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+            <svg class="bd-placeholder1" width="100%" height="650px" aria-hidden="true"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
+              <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+            </svg>
             <div class="container">
               <div class="carousel-caption">
                 <h1>Another ZONY headline.</h1>
@@ -29,7 +37,10 @@
             </div>
           </div>
           <div class="carousel-item">
-            <svg class="bd-placeholder2" width="100%" height="650px" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+            <svg class="bd-placeholder2" width="100%" height="650px" aria-hidden="true"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
+              <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+            </svg>
             <div class="container">
               <div class="carousel-caption text-end">
                 <h1>One more for good measure.</h1>
@@ -47,78 +58,83 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      </main>
-    </div>
-    <div class="container" style="margin-top: 90px; background-color: rgba(240, 248, 255, 0.329); padding-top: 8px; border-radius: 30px; padding-left: 5px; padding-right: 5px;">
+    </main>
+  </div>
+  <div class="container"
+    style="margin-top: 90px; background-color: rgba(240, 248, 255, 0.329); padding-top: 8px; border-radius: 30px; padding-left: 5px; padding-right: 5px;">
     <h1 style="text-align: center; font-weight: bold; ">RECENT USERS</h1>
     <div class="container marketing" style="padding-top: 20px; padding-bottom: 20px; overflow-x: auto;">
       <div class="row flex-nowrap" style="gap: 20px; height: 300px;">
-        <div 
-      class="col-lg-4 d-flex flex-column align-items-center" 
-      style="background-color: rgba(185, 249, 195, 0.491); border-radius: 40px; width: 380px; min-width: 380px; margin-right: 20px; border: 2px solid #4CAF50;"
-       *ngFor="let user of recentUsers">
-          <img 
-            [src]="'data:image/jpeg;base64,' + user.imageData || 'placeholder-image.jpg'" 
-            alt="{{ user.fullName }}" 
-            width="160" 
-            height="160" 
-            style="border-radius: 50%;" />
+        <div class="col-lg-4 d-flex flex-column align-items-center"
+          style="background-color: rgba(185, 249, 195, 0.491); border-radius: 40px; width: 380px; min-width: 380px; margin-right: 20px; border: 2px solid #4CAF50;"
+          *ngFor="let user of recentUsers">
+          <img [src]="'data:image/jpeg;base64,' + user.imageData || 'placeholder-image.jpg'" alt="{{ user.fullName }}"
+            width="160" height="160" style="border-radius: 50%;" />
           <h2 class="fw-normal">{{ user.fullName }}</h2>
           <p>Email: {{ user.email }}</p>
           <p>Address: {{ user.address }}</p>
         </div>
       </div>
     </div>
-    
+
+  </div>
+  <hr class="featurette-divider">
+  <div class="vision-mission-container">
+    <div class="section-vision">
+      <div class="text-content">
+        <h2>OUR VISION</h2>
+        <p>"To become an organization dedicated to produce thinkers capable of transforming their own lives and lives of
+          others."</p>
+      </div>
     </div>
-        <hr class="featurette-divider">
-        <div class="vision-mission-container">
-          <div class="section-vision">
-            <div class="text-content">
-              <h2>OUR VISION</h2>
-              <p>"To become an organization dedicated to produce thinkers capable of transforming their own lives and lives of others."</p>
-            </div>
-          </div>
-        
-          <section id="mission">
-            <div class="section-mission">
-              <div class="text-content">
-                <h2>OUR MISSION</h2>
-                <p>"Creating a learning environment for fostering innovation through experiential learning to produce highly influential lifelong learners."</p>
-              </div>
-            </div> </section>
-          </div>
-      
-    </div>
-    <div class="quality-policy">
-      <h2>OUR QUALITY POLICY</h2>
-      <p>
-          The Quality Policy of National Institute of Business Management is as follows.
-          We at National Institute of Business Management seek to delight our customers by offering highest quality Degree, Higher Diploma, Diploma and Certificate courses, and ensure that we meet and exceed customer specific requirements and expectations.
-      </p>
-      <p>
-          In order to accomplish this we maintain a quality management system conforming to ISO 9001:2015 international standards.
-      </p>
-      <p>
-          We are committed to:
-      </p>
-      <ul>
-          <li>Excell in the provision of our products & services</li>
-          <li>Meet speed and quality of services at the most competitive cost</li>
-          <li>Continually innovate and improve our services</li>
-      </ul>
-      <p>
-          To achieve the above-mentioned objectives, we will:
-      </p>
-      <ul>
-          <li>Set and deploy SMART objectives to identify and improve our Marketing, Customer Management, Enrollments, Course Design and Development, Academic Support, Delivery, Library, Evaluations and Awarding Processes benchmarked to global standards.</li>
-          <li>Design an organizational structure in accordance with state-of-the-art technology.</li>
-          <li>Align ourselves with the best management Consultants available in the industry.</li>
-          <li>Design and implement well-structured training programs for all our academic / non-academic staff.</li>
-          <li>Instill an organizational culture that continually reacts to all risks and opportunities arising in the internal and external contexts and among our key stakeholders.</li>
-          <li>Maintain and improve the effectiveness of our Quality Management System (CMS) Continually.</li>
-      </ul>
-      <!-- <button (click)="downloadQualityPolicy(report)">DOWNLOAD QUALITY POLICY</button> -->
-    </div>
-    <app-sidebar-admin></app-sidebar-admin>
-    <app-footer></app-footer>
+
+    <section id="mission">
+      <div class="section-mission">
+        <div class="text-content">
+          <h2>OUR MISSION</h2>
+          <p>"Creating a learning environment for fostering innovation through experiential learning to produce highly
+            influential lifelong learners."</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>
+<div class="quality-policy">
+  <h2>OUR QUALITY POLICY</h2>
+  <p>
+    The Quality Policy of National Institute of Business Management is as follows.
+    We at National Institute of Business Management seek to delight our customers by offering highest quality Degree,
+    Higher Diploma, Diploma and Certificate courses, and ensure that we meet and exceed customer specific requirements
+    and expectations.
+  </p>
+  <p>
+    In order to accomplish this we maintain a quality management system conforming to ISO 9001:2015 international
+    standards.
+  </p>
+  <p>
+    We are committed to:
+  </p>
+  <ul>
+    <li>Excell in the provision of our products & services</li>
+    <li>Meet speed and quality of services at the most competitive cost</li>
+    <li>Continually innovate and improve our services</li>
+  </ul>
+  <p>
+    To achieve the above-mentioned objectives, we will:
+  </p>
+  <ul>
+    <li>Set and deploy SMART objectives to identify and improve our Marketing, Customer Management, Enrollments, Course
+      Design and Development, Academic Support, Delivery, Library, Evaluations and Awarding Processes benchmarked to
+      global standards.</li>
+    <li>Design an organizational structure in accordance with state-of-the-art technology.</li>
+    <li>Align ourselves with the best management Consultants available in the industry.</li>
+    <li>Design and implement well-structured training programs for all our academic / non-academic staff.</li>
+    <li>Instill an organizational culture that continually reacts to all risks and opportunities arising in the internal
+      and external contexts and among our key stakeholders.</li>
+    <li>Maintain and improve the effectiveness of our Quality Management System (CMS) Continually.</li>
+  </ul>
+  <!-- <button (click)="downloadQualityPolicy(report)">DOWNLOAD QUALITY POLICY</button> -->
+</div>
+<app-sidebar-admin></app-sidebar-admin>
+<app-footer></app-footer>

@@ -11,7 +11,7 @@ import { SidebarAdminComponent } from "../sidebar-admin/sidebar-admin.component"
 @Component({
   selector: 'app-about-admin',
   standalone: true,
-  imports: [HeaderAdminComponent, SidebarAdminComponent, FooterComponent,CommonModule,FormsModule],
+  imports: [HeaderAdminComponent, SidebarAdminComponent, FooterComponent, CommonModule, FormsModule],
   templateUrl: './about-admin.component.html',
   styleUrl: './about-admin.component.css'
 })
@@ -22,7 +22,7 @@ export class AboutAdminComponent implements OnInit {
     private profileViewService: ProfileViewService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.authService.loadUserDetails();

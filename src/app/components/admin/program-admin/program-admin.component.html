@@ -20,12 +20,10 @@
                         <td>{{ program.programVenue }}</td>
                         <td>{{ program.programDateTime | date: 'short' }}</td>
                         <td>
-                            <button class="btn btn-warning btn-sm me-2"
-                                (click)="editProgram(program)">
+                            <button class="btn btn-warning btn-sm me-2" (click)="editProgram(program)">
                                 <i class="bi bi-pencil-square me-2"></i> Edit
                             </button>
-                            <button class="btn btn-danger btn-sm"
-                                (click)="deleteProgram(program.programId)">
+                            <button class="btn btn-danger btn-sm" (click)="deleteProgram(program.programId)">
                                 <i class="bi bi-trash me-2"></i> Delete
                             </button>
                         </td>
@@ -34,8 +32,7 @@
             </table>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-primary mb-3" (click)="addProgram()"
-                style="margin-top: 100px;">
+            <button class="btn btn-primary mb-3" (click)="addProgram()" style="margin-top: 100px;">
                 <i class="bi bi-plus-circle me-2"></i> Add Program
             </button>
             <div *ngIf="selectedProgram" class="form-container">
@@ -43,82 +40,49 @@
                     <div class="mb-3">
                         <label for="programName" class="form-label">Program
                             Name</label>
-                        <input
-                            type="text"
-                            id="programName"
-                            [(ngModel)]="selectedProgram.programName"
-                            name="programName"
-                            class="form-control"
-                            required />
+                        <input type="text" id="programName" [(ngModel)]="selectedProgram.programName" name="programName"
+                            class="form-control" required />
                     </div>
                     <div class="mb-3">
                         <label for="programMission" class="form-label">Program
                             Mission</label>
-                        <textarea
-                            id="programMission"
-                            [(ngModel)]="selectedProgram.programMission"
-                            name="programMission"
-                            class="form-control"
-                            required></textarea>
+                        <textarea id="programMission" [(ngModel)]="selectedProgram.programMission" name="programMission"
+                            class="form-control" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="programDetails" class="form-label">Program
                             Details</label>
-                        <textarea
-                            id="programDetails"
-                            [(ngModel)]="selectedProgram.programDetails"
-                            name="programDetails"
-                            class="form-control"
-                            required></textarea>
+                        <textarea id="programDetails" [(ngModel)]="selectedProgram.programDetails" name="programDetails"
+                            class="form-control" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="programVenue" class="form-label">Program
                             Venue</label>
-                        <input
-                            type="text"
-                            id="programVenue"
-                            [(ngModel)]="selectedProgram.programVenue"
-                            name="programVenue"
-                            class="form-control"
-                            required />
+                        <input type="text" id="programVenue" [(ngModel)]="selectedProgram.programVenue"
+                            name="programVenue" class="form-control" required />
                     </div>
                     <div class="mb-3">
                         <label for="programDateTime" class="form-label">Program
                             Date and Time</label>
-                        <input
-                            type="datetime-local"
-                            id="programDateTime"
-                            [(ngModel)]="selectedProgram.programDateTime"
-                            name="programDateTime"
-                            class="form-control"
-                            required />
+                        <input type="datetime-local" id="programDateTime" [(ngModel)]="selectedProgram.programDateTime"
+                            name="programDateTime" class="form-control" required />
                     </div>
                     <div class="mb-3">
                         <div class="image-preview mb-3 text-center">
-                            <img
-                                *ngIf="imagePreview"
-                                [src]="imagePreview"
-                                alt="Program Image"
-                                class="img-fluid rounded"
+                            <img *ngIf="imagePreview" [src]="imagePreview" alt="Program Image" class="img-fluid rounded"
                                 style="max-height: 200px;" />
                         </div>
-                        <button class="btn btn-secondary" type="button"
-                            (click)="triggerFileInput()">
+                        <button class="btn btn-secondary" type="button" (click)="triggerFileInput()">
                             <i class="bi bi-upload me-2"></i> Upload Image
                         </button>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            (change)="onImageSelected($event)"
-                            #fileInput
+                        <input type="file" accept="image/*" (change)="onImageSelected($event)" #fileInput
                             style="display: none;" />
                     </div>
                     <button type="submit" class="btn btn-success">
                         <i class="bi bi-check-circle me-2"></i>{{ isEditMode ?
                         'Update' : 'Add' }} Program
                     </button>
-                    <button type="button" class="btn btn-outline-secondary"
-                        (click)="clearForm()">
+                    <button type="button" class="btn btn-outline-secondary" (click)="clearForm()">
                         <i class="bi bi-x-circle me-2"></i> Cancel
                     </button>
                 </form>
@@ -128,120 +92,91 @@
 </div>
 <div class="cont">
     <h1 class="h1eka"><b>All Programmes</b></h1>
-<p class="lead text-center" style="color: rgb(0, 0, 0)">
-    Our campus offers a diverse range of programs designed to foster growth,
-    creativity, and academic excellence. From specialized workshops to
-    large-scale conferences, each program is crafted to enrich the learning
-    experience and provide valuable opportunities for students and faculty to
-    engage, collaborate, and innovate together.
-</p>
+    <p class="lead text-center" style="color: rgb(0, 0, 0)">
+        Our campus offers a diverse range of programs designed to foster growth,
+        creativity, and academic excellence. From specialized workshops to
+        large-scale conferences, each program is crafted to enrich the learning
+        experience and provide valuable opportunities for students and faculty to
+        engage, collaborate, and innovate together.
+    </p>
 
-<div class="program" style="margin-top: 40px;">
-    <div class="filter-bar">
-        <div class="filter-container">
-            <div class="filter-item">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i
-                                class="bi bi-person"></i></span>
+    <div class="program" style="margin-top: 40px;">
+        <div class="filter-bar">
+            <div class="filter-container">
+                <div class="filter-item">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Filter by Name" [(ngModel)]="filterName"
+                            (input)="applyFilters()" />
                     </div>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Filter by Name"
-                        [(ngModel)]="filterName"
-                        (input)="applyFilters()" />
+                </div>
+
+                <div class="filter-item">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-building"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Filter by Faculty"
+                            [(ngModel)]="filterFaculty" (input)="applyFilters()" />
+                    </div>
+                </div>
+
+                <div class="filter-item">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                        </div>
+                        <input type="month" class="form-control" [(ngModel)]="filterMonth" (change)="applyFilters()" />
+                    </div>
+                </div>
+
+                <div class="filter-item">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                        </div>
+                        <input type="date" class="form-control" [(ngModel)]="filterDate" (change)="applyFilters()" />
+                    </div>
+                </div>
+
+                <div class="filter-item">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-clock"></i></span>
+                        </div>
+                        <input type="time" class="form-control" [(ngModel)]="filterTime" (change)="applyFilters()" />
+                    </div>
                 </div>
             </div>
 
-            <div class="filter-item">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i
-                                class="bi bi-building"></i></span>
-                    </div>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Filter by Faculty"
-                        [(ngModel)]="filterFaculty"
-                        (input)="applyFilters()" />
-                </div>
-            </div>
+        </div>
 
-            <div class="filter-item">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i
-                                class="bi bi-calendar-event"></i></span>
-                    </div>
-                    <input
-                        type="month"
-                        class="form-control"
-                        [(ngModel)]="filterMonth"
-                        (change)="applyFilters()" />
-                </div>
-            </div>
-
-            <div class="filter-item">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i
-                                class="bi bi-calendar"></i></span>
-                    </div>
-                    <input
-                        type="date"
-                        class="form-control"
-                        [(ngModel)]="filterDate"
-                        (change)="applyFilters()" />
-                </div>
-            </div>
-
-            <div class="filter-item">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i
-                                class="bi bi-clock"></i></span>
-                    </div>
-                    <input
-                        type="time"
-                        class="form-control"
-                        [(ngModel)]="filterTime"
-                        (change)="applyFilters()" />
+        <div class="program-card-container">
+            <div *ngFor="let program of filteredPrograms" class="card program-card">
+                <img *ngIf="program.programImageData"
+                    [src]="'data:' + program.programImageType + ';base64,' + program.programImageData"
+                    class="card-img-top program-image" alt="{{ program.programName }}" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ program.programName }}</h5>
+                    <p class="card-text program-mission">{{ program.programMission
+                        }}</p>
+                    <p class="card-text program-details">{{ program.programDetails
+                        }}</p>
+                    <p class="card-text program-venue"><strong>Venue:</strong> {{
+                        program.programVenue }}</p>
+                    <p class="card-text program-datetime"><strong>Date &
+                            Time:</strong> {{ program.programDateTime |
+                        date:'medium' }}</p>
                 </div>
             </div>
         </div>
-
     </div>
-
-    <div class="program-card-container">
-        <div
-            *ngFor="let program of filteredPrograms"
-            class="card program-card">
-            <img
-                *ngIf="program.programImageData"
-                [src]="'data:' + program.programImageType + ';base64,' + program.programImageData"
-                class="card-img-top program-image"
-                alt="{{ program.programName }}" />
-            <div class="card-body">
-                <h5 class="card-title">{{ program.programName }}</h5>
-                <p class="card-text program-mission">{{ program.programMission
-                    }}</p>
-                <p class="card-text program-details">{{ program.programDetails
-                    }}</p>
-                <p class="card-text program-venue"><strong>Venue:</strong> {{
-                    program.programVenue }}</p>
-                <p class="card-text program-datetime"><strong>Date &
-                        Time:</strong> {{ program.programDateTime |
-                    date:'medium' }}</p>
-            </div>
-        </div>
+    <div class="calendar-section">
+        <h3>Program Schedule</h3>
+        <full-calendar [options]="calendarOptions"></full-calendar>
     </div>
-</div>
-<div class="calendar-section">
-    <h3>Program Schedule</h3>
-    <full-calendar [options]="calendarOptions"></full-calendar>
-</div>
 </div>
 <app-sidebar-admin></app-sidebar-admin>
 <app-footer></app-footer>

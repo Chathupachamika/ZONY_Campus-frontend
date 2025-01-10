@@ -8,7 +8,7 @@ import { Register } from '../model/register.model';
 })
 export class RegisterService {
 
-  private apiUrl = 'http://localhost:9090/register'; 
+  private apiUrl = 'http://localhost:9090/register';
   private baseUrl = 'http://localhost:9090';
 
   constructor(private http: HttpClient) { }
@@ -16,7 +16,7 @@ export class RegisterService {
   addUser(formData: FormData): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/add-user`, formData);
   }
-  
+
 
   getAll(): Observable<Register[]> {
     return this.http.get<Register[]>(`${this.apiUrl}/get-all`);
@@ -35,7 +35,7 @@ export class RegisterService {
   }
 
   sendPasswordResetEmail(email: string): Observable<any> {
-    const requestBody = { email }; 
+    const requestBody = { email };
     return this.http.post(`${this.baseUrl}/forgot-password/post`, requestBody);
   }
 }

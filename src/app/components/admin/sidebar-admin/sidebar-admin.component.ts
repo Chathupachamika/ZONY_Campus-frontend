@@ -27,9 +27,9 @@ export class SidebarAdminComponent implements OnInit {
 
   constructor(
     private profileViewService: ProfileViewService,
-    private authService: AuthService, 
+    private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadUserDetails();

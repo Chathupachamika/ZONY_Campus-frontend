@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private registerService: RegisterService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const rememberedUser = localStorage.getItem('rememberedUser');
@@ -35,20 +35,20 @@ export class LoginComponent implements OnInit {
   }
 
   login(event?: Event) {
-    if (event) event.preventDefault(); 
+    if (event) event.preventDefault();
 
     this.profileViewService.getDetails().subscribe({
       next: (users) => {
         const foundUser = users.find(u => u.email === this.user.email && u.password === this.user.password);
-        
+
         if (foundUser) {
-          this.profileViewService.logUser(foundUser); 
+          this.profileViewService.logUser(foundUser);
           if (this.rememberMe) {
             localStorage.setItem('rememberedUser', JSON.stringify(this.user));
           } else {
             localStorage.removeItem('rememberedUser');
           }
-          
+
           const redirectPath = foundUser.title === 'Admin' ? '/admin/dashboard' : '/home';
           this.router.navigate([redirectPath]).then(() => {
             this.snackBar.open(`Welcome${foundUser.title === 'Admin' ? ' to the Admin Dashboard!' : '!'}`, '', {
@@ -81,36 +81,36 @@ export class LoginComponent implements OnInit {
 
   openForgotPassword() {
     if (!this.isEmailValid(this.user.email)) {
-        this.snackBar.open('Please enter a valid email address.', '', {
-            duration: 2000,
-            verticalPosition: 'top',
-            horizontalPosition: 'center',
-            panelClass: ['error-snackbar']
-        });
-        return;
+      this.snackBar.open('Please enter a valid email address.', '', {
+        duration: 2000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center',
+        panelClass: ['error-snackbar']
+      });
+      return;
     }
 
     this.registerService.sendPasswordResetEmail(this.user.email).subscribe({
-        next: (response) => {
-            this.snackBar.open('Password reset email sent!', '', {
-                duration: 2000,
-                verticalPosition: 'top',
-                horizontalPosition: 'center',
-                panelClass: ['success-snackbar']
-            });
-        },
-        error: (error) => {
-            console.error('Error sending password reset email:', error);
-            alert('Open Email and get password...');
-            this.snackBar.open('Password sent to Email...', '', {
-                duration: 2000,
-                verticalPosition: 'top',
-                horizontalPosition: 'center',
-                panelClass: ['error-snackbar']
-            });
-        }
+      next: (response) => {
+        this.snackBar.open('Password reset email sent!', '', {
+          duration: 2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+          panelClass: ['success-snackbar']
+        });
+      },
+      error: (error) => {
+        console.error('Error sending password reset email:', error);
+        alert('Open Email and get password...');
+        this.snackBar.open('Password sent to Email...', '', {
+          duration: 2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+          panelClass: ['error-snackbar']
+        });
+      }
     });
-}
+  }
   isEmailValid(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }

@@ -30,7 +30,7 @@ import { SidebarAdminComponent } from "../sidebar-admin/sidebar-admin.component"
     RouterModule,
     FullCalendarModule,
     SidebarAdminComponent
-],
+  ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private profileViewService: ProfileViewService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngAfterViewInit(): void {
     this.animateNumbers();
@@ -131,7 +131,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   animateNumbers() {
     this.numbers.forEach((numberElement) => {
       const targetText = numberElement.nativeElement.innerText;
-      const targetNumber = parseInt(targetText.replace(/\D/g, ''), 10); 
+      const targetNumber = parseInt(targetText.replace(/\D/g, ''), 10);
       const duration = 3200;
 
       let current = 0;

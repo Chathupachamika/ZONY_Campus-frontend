@@ -4,8 +4,8 @@ export interface Program {
   programMission: string;
   programDetails: string;
   programVenue: string;
-  programDateTime: string; 
+  programDateTime: string;
   programImageName: string;
   programImageType: string;
-  programImageData: string; 
+  programImageData: string;
 }

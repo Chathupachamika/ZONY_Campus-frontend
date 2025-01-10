@@ -79,10 +79,10 @@ export class FacultyService {
     if (imageFile) {
       formData.append('imageFile', imageFile);
     }
-  
+
     return this.http.put(`${this.lecturerUrl}/update-lecturer`, formData);
   }
-  
+
 
   getLecturerById(id: number): Observable<Lecturer> {
     return this.http.get<Lecturer>(`${this.lecturerUrl}/searchLecturer-by-id/${id}`);

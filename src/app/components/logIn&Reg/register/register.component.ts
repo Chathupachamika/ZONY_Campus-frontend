@@ -13,9 +13,9 @@ import { ProfileViewService, UserDetails } from '../../../service/profile-view.s
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatButtonModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
+  imports: [CommonModule, FormsModule, MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatSelectModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
     password: '',
     imageData: ''
   };
-  
+
   confirmPassword: string = '';
   profileImageSrc: string | null = null;
   selectedImageFile: File | null = null;
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
   imageWarning = '';
 
   faculties: any[] = [];
-  constructor(private profileViewService: ProfileViewService, private router: Router, private facultyService: FacultyService,) {}
+  constructor(private profileViewService: ProfileViewService, private router: Router, private facultyService: FacultyService,) { }
 
   ngOnInit(): void {
     this.loadFaculties();
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
   }
   loadFaculties(): void {
     this.facultyService.getFaculties().subscribe(
-      (response: any[]) => {  
+      (response: any[]) => {
         this.faculties = response;
       },
       (error: HttpErrorResponse) => {
@@ -94,7 +94,7 @@ export class RegisterComponent implements OnInit {
     this.profileViewService.registerUser(formData).subscribe({
       next: response => {
         console.log('Registration successful:', response.message);
-        this.router.navigate(['/login']); 
+        this.router.navigate(['/login']);
       },
       error: error => {
         console.error('Registration failed:', error.message);
@@ -103,6 +103,6 @@ export class RegisterComponent implements OnInit {
   }
 
   backToLogin(): void {
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login']);
   }
 }

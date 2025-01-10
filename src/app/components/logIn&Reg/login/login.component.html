@@ -13,38 +13,20 @@
             <h2 class="text-center">Login</h2>
             <form (ngSubmit)="login($event)">
               <label for="email">Email</label>
-              <input 
-                style="width: 300px;" 
-                [(ngModel)]="user.email" 
-                name="email" 
-                type="email" 
-                id="email" 
-                placeholder="Enter your email" 
-                required 
-              />
+              <input style="width: 300px;" [(ngModel)]="user.email" name="email" type="email" id="email"
+                placeholder="Enter your email" required />
               <label for="password">Password</label>
-              <input 
-                style="width: 300px;" 
-                [(ngModel)]="user.password" 
-                name="password" 
-                type="password" 
-                id="password" 
-                placeholder="Enter your password" 
-                required 
-              />
-              
+              <input style="width: 300px;" [(ngModel)]="user.password" name="password" type="password" id="password"
+                placeholder="Enter your password" required />
+
               <div class="options">
                 <label>
-                  <input 
-                    type="checkbox" 
-                    [(ngModel)]="rememberMe" 
-                    name="rememberMe"
-                  /> 
+                  <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" />
                   Remember me
                 </label>
                 <a type="submit" (click)="openForgotPassword()">Forgot Password?</a>
               </div>
-              
+
               <button type="submit" class="login-button">Login</button>
             </form>
             <p class="register-link">
@@ -52,7 +34,7 @@
             </p>
           </div>
           <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-      </form>
+        </form>
       </div>
 
       <div class="info-section d-flex align-items-center" style="width:500px;">

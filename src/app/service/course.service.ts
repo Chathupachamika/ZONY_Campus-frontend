@@ -8,9 +8,9 @@ import { Course } from '../model/course.model';
 })
 export class CourseService {
   private apiEndpoint = 'http://localhost:9090/course';
-  private baseUrl = 'http://localhost:9090/payment'; 
+  private baseUrl = 'http://localhost:9090/payment';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.apiEndpoint}/get-all`);

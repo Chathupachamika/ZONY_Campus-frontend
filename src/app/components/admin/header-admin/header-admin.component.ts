@@ -12,7 +12,7 @@ import { ProgramService } from '../../../service/program.service';
 @Component({
   selector: 'app-header-admin',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './header-admin.component.html',
   styleUrl: './header-admin.component.css'
 })
@@ -26,7 +26,7 @@ export class HeaderAdminComponent implements OnInit {
     private profileViewService: ProfileViewService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.authService.loadUserDetails();

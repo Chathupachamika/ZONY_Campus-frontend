@@ -35,7 +35,7 @@ export class ProgramAdminComponent implements OnInit {
   imagePreview: string | null = null;
   imageFile: File | null = null;
 
-  constructor(private programService: ProgramService) {}
+  constructor(private programService: ProgramService) { }
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
@@ -164,9 +164,9 @@ export class ProgramAdminComponent implements OnInit {
       programDetails: '',
       programVenue: '',
       programDateTime: '',
-      programImageName: '', 
-      programImageType: '', 
-      programImageData: '', 
+      programImageName: '',
+      programImageType: '',
+      programImageData: '',
     } as Program;
     this.isEditMode = false;
     this.imagePreview = null;

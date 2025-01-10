@@ -13,7 +13,7 @@ export interface UserDetails {
   username: string;
   shortName: string;
   address: string;
-  password:string;
+  password: string;
   passport: string;
   program: string;
   title: string;
@@ -29,10 +29,10 @@ export class ProfileViewService {
   private userDetailsByReg: UserDetails | null = null;
   private verifyPasswordUrl = `http://localhost:9090/register/verifyPasswordUrl`;
   private apiUrl = 'http://localhost:9090/register/get-all';
-  private updateApiUrl = 'http://localhost:9090/register/update-user'; 
-  private deleteApiUrl = 'http://localhost:9090/register/delete-by-id'; 
+  private updateApiUrl = 'http://localhost:9090/register/update-user';
+  private deleteApiUrl = 'http://localhost:9090/register/delete-by-id';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getDetails(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
@@ -47,18 +47,18 @@ export class ProfileViewService {
   getUserDetails(): any {
     return this.userDetails;
   }
-  getUserDetailsByreg():any{
+  getUserDetailsByreg(): any {
     return this.userDetailsByReg;
   }
 
   registerUser(formData: FormData): Observable<{ message: string, userDetails: any }> {
     return this.http.post<{ message: string, userDetails: any }>('http://localhost:9090/register/add-user', formData)
       .pipe(tap(response => {
-        console.log('Response:', this.userResponse);  
+        console.log('Response:', this.userResponse);
         console.log('User was added:', this.userResponse.message);
-  
+
         if (this.userResponse && this.userResponse.userDetails) {
-          console.log('Logged in user details:', this.userResponse.userDetails); 
+          console.log('Logged in user details:', this.userResponse.userDetails);
           this.logUser(this.userResponse.userDetails);
           this.userDetailsByReg = this.userResponse.userDetails;
           localStorage.setItem('currentUser', JSON.stringify(this.userResponse.userDetails));
@@ -67,11 +67,11 @@ export class ProfileViewService {
         }
       }));
   }
-  
+
   updateUser(user: UserDetails, imageFile: File | null): Observable<{ message: string; userDetails: UserDetails }> {
     const formData = new FormData();
     formData.append('user', new Blob([JSON.stringify(user)], { type: 'application/json' }));
-    
+
     if (imageFile) {
       formData.append('imageFile', imageFile);
     }
@@ -96,14 +96,14 @@ export class ProfileViewService {
     }
     return throwError(() => new Error(errorMessage));
   }
-  
-  
+
+
 
   deleteUser(userId: number): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(`${this.deleteApiUrl}/${userId}`).pipe(
       tap(response => {
         console.log('User deleted:', response.message);
-        this.userDetails = null; 
+        this.userDetails = null;
         this.userDetailsByReg = null;
       }),
       catchError(error => {
@@ -130,7 +130,7 @@ export class ProfileViewService {
       catchError(this.handleError)
     );
   }
-  
+
 }
 
 

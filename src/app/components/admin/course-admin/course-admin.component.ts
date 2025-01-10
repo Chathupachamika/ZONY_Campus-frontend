@@ -28,7 +28,7 @@ export class CourseAdminComponent implements OnInit {
   filterSubject: string = '';
   filterFee: number | null = null;
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
     this.loadCourses();
@@ -39,7 +39,7 @@ export class CourseAdminComponent implements OnInit {
           isEditing: false,
           image: `data:${course.courseImageType};base64,${course.courseImageData}`
         }));
-        this.filteredCourses = [...this.courses]; 
+        this.filteredCourses = [...this.courses];
       },
       error: (err) => {
         console.error("Failed to load courses", err);
@@ -64,7 +64,7 @@ export class CourseAdminComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
   saveCourse(): void {
-    const fileToUpload = this.imageFile || undefined; 
+    const fileToUpload = this.imageFile || undefined;
     if (this.isEditMode) {
       this.courseService.updateCourse(this.selectedCourse, fileToUpload).subscribe(() => {
         this.loadCourses();
@@ -79,7 +79,7 @@ export class CourseAdminComponent implements OnInit {
     }
   }
 
-  
+
   editCourse(course: Course): void {
     this.selectedCourse = { ...course };
     this.isEditMode = true;
@@ -88,10 +88,10 @@ export class CourseAdminComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const selectedFile = input.files[0];
-      this.imageFile = selectedFile; 
+      this.imageFile = selectedFile;
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
-        this.imagePreview = e.target?.result as string; 
+        this.imagePreview = e.target?.result as string;
       };
       reader.readAsDataURL(selectedFile);
     }
@@ -104,7 +104,7 @@ export class CourseAdminComponent implements OnInit {
       description: '',
       subjects: '',
       courseFee: 0,
-      fulDetails:'',
+      fulDetails: '',
       courseImageName: '',
       courseImageType: '',
       courseImageData: null,
@@ -112,7 +112,7 @@ export class CourseAdminComponent implements OnInit {
     this.isEditMode = false;
     this.imageFile = null;
   }
-  
+
   deleteCourse(id: number): void {
     this.courseService.deleteCourseById(id).subscribe(() => {
       alert('Delete Successfully...');
@@ -125,13 +125,13 @@ export class CourseAdminComponent implements OnInit {
         ...course,
         imagePreview: course.courseImageData ? `data:${course.courseImageType};base64,${course.courseImageData}` : null
       }));
-      this.filteredCourses = [...this.courses]; 
+      this.filteredCourses = [...this.courses];
     });
   }
 
   showAllCourses(): void {
     this.showMiniWindow = true;
-    this.resetFilters(); 
+    this.resetFilters();
   }
 
   applyFilters(): void {
@@ -148,7 +148,7 @@ export class CourseAdminComponent implements OnInit {
     this.filterName = '';
     this.filterSubject = '';
     this.filterFee = null;
-    this.filteredCourses = [...this.courses]; 
+    this.filteredCourses = [...this.courses];
   }
 
   onPurchase(course: Course): void {
@@ -163,14 +163,14 @@ export class CourseAdminComponent implements OnInit {
     this.courseService.createPayment(paymentDetails).subscribe({
       next: (response) => {
         if (response.redirectUrl) {
-          window.location.href = response.redirectUrl; 
+          window.location.href = response.redirectUrl;
         }
       },
       error: (err) => {
         console.error("Payment failed", err);
       }
     });
-}
+  }
 
   saveChanges(course: Course): void {
     const updatedCourse: Course = { ...course };
@@ -191,7 +191,7 @@ export class CourseAdminComponent implements OnInit {
     const pageWidth = doc.internal.pageSize.width;
     doc.setFontSize(18);
     doc.text('Course Details', pageWidth / 2, 20, { align: 'center' });
-    let currentY = 40; 
+    let currentY = 40;
     const lineHeight = 10;
     if (course.courseImageData) {
       try {
@@ -200,7 +200,7 @@ export class CourseAdminComponent implements OnInit {
         const imgHeight = 50;
         const imgX = (pageWidth - imgWidth) / 2;
         doc.addImage(imgBase64, 'JPEG', imgX, currentY, imgWidth, imgHeight);
-        currentY += imgHeight + 10; 
+        currentY += imgHeight + 10;
       } catch (error) {
         console.error('Error loading image:', error);
         doc.setFontSize(12);
@@ -211,17 +211,17 @@ export class CourseAdminComponent implements OnInit {
     doc.setFontSize(12);
     doc.text(`Course Name: ${course.courseName}`, 20, currentY);
     currentY += lineHeight;
-    
+
     doc.text(`Subject: ${course.subjects}`, 20, currentY);
     currentY += lineHeight;
-    
+
     doc.text(`Course Fee: ${course.courseFee}`, 20, currentY);
     currentY += lineHeight;
     const splitDescription = doc.splitTextToSize(`Description: ${course.description}`, pageWidth - 40);
     doc.text(splitDescription, 20, currentY);
     currentY += lineHeight * splitDescription.length;
     if (course.fulDetails) {
-      currentY += lineHeight; 
+      currentY += lineHeight;
       const splitDetails = doc.splitTextToSize(`${course.fulDetails}`, pageWidth - 40);
       doc.text(splitDetails, 20, currentY);
       currentY += lineHeight * splitDetails.length;

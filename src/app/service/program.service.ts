@@ -10,7 +10,7 @@ import { Program } from '../model/program.model';
 export class ProgramService {
   private apiUrl = 'http://localhost:9090/program';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getDetails(): Observable<Program[]> {
     return this.http.get<Program[]>(`${this.apiUrl}/get-allPrograms`).pipe(
@@ -42,11 +42,11 @@ export class ProgramService {
     imageFile: File | null
   ): Observable<{ message: string; programDetails: Program }> {
     const formData = new FormData();
-    formData.append('Program', new Blob([JSON.stringify(program)], { type: 'application/json' })); 
+    formData.append('Program', new Blob([JSON.stringify(program)], { type: 'application/json' }));
     if (imageFile) {
       formData.append('imageFile', imageFile);
     }
-  
+
     return this.http.put<{ message: string; programDetails: Program }>(
       `${this.apiUrl}/update-Program`,
       formData
@@ -55,7 +55,7 @@ export class ProgramService {
       catchError(this.handleError)
     );
   }
-  
+
 
   deleteProgram(programId: number): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(
@@ -74,7 +74,7 @@ export class ProgramService {
     } else if (error.status === 0) {
       errorMessage = 'Network error. Please check your internet connection.';
     } else if (error.error?.message) {
-      errorMessage = error.error.message; 
+      errorMessage = error.error.message;
     }
     return throwError(() => new Error(errorMessage));
   }

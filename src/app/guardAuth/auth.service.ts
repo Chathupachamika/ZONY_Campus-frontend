@@ -9,14 +9,14 @@ import { ProfileViewService, UserDetails } from '../service/profile-view.service
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/register';  
+  private apiUrl = 'http://localhost:8080/register';
   private currentUserSubject: BehaviorSubject<UserDetails | null>;
   public currentUser: Observable<UserDetails | null>;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private profileViewService: ProfileViewService 
+    private profileViewService: ProfileViewService
   ) {
     const storedUser = localStorage.getItem('currentUser');
     this.currentUserSubject = new BehaviorSubject<UserDetails | null>(storedUser ? JSON.parse(storedUser) : null);
@@ -67,8 +67,8 @@ export class AuthService {
     const storedUser = localStorage.getItem('currentUser');
     if (storedUser) {
       const user = JSON.parse(storedUser);
-      this.profileViewService.logUser(user);  
-      this.currentUserSubject.next(user);  
+      this.profileViewService.logUser(user);
+      this.currentUserSubject.next(user);
     } else {
       this.currentUserSubject.next(null);
     }

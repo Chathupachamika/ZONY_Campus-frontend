@@ -14,7 +14,7 @@ export class Register {
   username: string = '';
   password: string = '';
   faculty: any = {};
-  imageData?: string = '';  
+  imageData?: string = '';
   imageName?: string = '';
   imageType?: string = '';
 }
