@@ -111,4 +111,5 @@ For support and queries, please contact:
 - Issue Tracker: [GitHub Issues](https://github.com/Chathupachamika/ZONY_Campus-frontend/issues)
 
 ---
+
 Made with ❤️ by the Chathupa Chamika
